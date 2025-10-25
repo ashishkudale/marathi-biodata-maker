@@ -45,52 +45,52 @@ export default function Template3({ data }: TemplateProps) {
             वैयक्तिक माहिती
           </h3>
           <div className="space-y-1.5 text-sm">
-            <div className="grid grid-cols-[1fr_auto_2fr] gap-x-2">
-              <span className="font-semibold text-gray-700 text-right">नाव</span>
-              <span>:</span>
-              <span className="font-marathi">
+            <div className="flex">
+              <span className="font-semibold text-gray-700 w-24 text-right">नाव</span>
+              <span className="mx-2">:</span>
+              <span className="flex-1 font-marathi">
                 {data.personalDetails?.fullNameMarathi || data.personalDetails?.fullName || 'N/A'}
               </span>
             </div>
-            <div className="grid grid-cols-[1fr_auto_2fr] gap-x-2">
-              <span className="font-semibold text-gray-700 text-right">जन्मतारीख</span>
-              <span>:</span>
-              <span>{data.personalDetails?.dateOfBirth || 'N/A'}</span>
+            <div className="flex">
+              <span className="font-semibold text-gray-700 w-24 text-right">जन्मतारीख</span>
+              <span className="mx-2">:</span>
+              <span className="flex-1">{data.personalDetails?.dateOfBirth || 'N/A'}</span>
             </div>
             {data.personalDetails?.birthTime && (
-              <div className="grid grid-cols-[1fr_auto_2fr] gap-x-2">
-                <span className="font-semibold text-gray-700 text-right">जन्मवेळ</span>
-                <span>:</span>
-                <span>{data.personalDetails.birthTime}</span>
+              <div className="flex">
+                <span className="font-semibold text-gray-700 w-24 text-right">जन्मवेळ</span>
+                <span className="mx-2">:</span>
+                <span className="flex-1">{data.personalDetails.birthTime}</span>
               </div>
             )}
-            <div className="grid grid-cols-[1fr_auto_2fr] gap-x-2">
-              <span className="font-semibold text-gray-700 text-right">जन्मस्थळ</span>
-              <span>:</span>
-              <span>{data.personalDetails?.birthPlace || 'N/A'}</span>
+            <div className="flex">
+              <span className="font-semibold text-gray-700 w-24 text-right">जन्मस्थळ</span>
+              <span className="mx-2">:</span>
+              <span className="flex-1">{data.personalDetails?.birthPlace || 'N/A'}</span>
             </div>
-            <div className="grid grid-cols-[1fr_auto_2fr] gap-x-2">
-              <span className="font-semibold text-gray-700 text-right">वय</span>
-              <span>:</span>
-              <span>{data.personalDetails?.age || 'N/A'} वर्षे</span>
+            <div className="flex">
+              <span className="font-semibold text-gray-700 w-24 text-right">वय</span>
+              <span className="mx-2">:</span>
+              <span className="flex-1">{data.personalDetails?.age || 'N/A'} वर्षे</span>
             </div>
-            <div className="grid grid-cols-[1fr_auto_2fr] gap-x-2">
-              <span className="font-semibold text-gray-700 text-right">उंची</span>
-              <span>:</span>
-              <span>{data.personalDetails?.height || 'N/A'}</span>
+            <div className="flex">
+              <span className="font-semibold text-gray-700 w-24 text-right">उंची</span>
+              <span className="mx-2">:</span>
+              <span className="flex-1">{data.personalDetails?.height || 'N/A'}</span>
             </div>
             {data.personalDetails?.bloodGroup && (
-              <div className="grid grid-cols-[1fr_auto_2fr] gap-x-2">
-                <span className="font-semibold text-gray-700 text-right">रक्तगट</span>
-                <span>:</span>
-                <span>{data.personalDetails.bloodGroup}</span>
+              <div className="flex">
+                <span className="font-semibold text-gray-700 w-24 text-right">रक्तगट</span>
+                <span className="mx-2">:</span>
+                <span className="flex-1">{data.personalDetails.bloodGroup}</span>
               </div>
             )}
             {data.personalDetails?.manglik && (
-              <div className="grid grid-cols-[1fr_auto_2fr] gap-x-2">
-                <span className="font-semibold text-gray-700 text-right">मांगलिक</span>
-                <span>:</span>
-                <span>{data.personalDetails.manglik}</span>
+              <div className="flex">
+                <span className="font-semibold text-gray-700 w-24 text-right">मांगलिक</span>
+                <span className="mx-2">:</span>
+                <span className="flex-1">{data.personalDetails.manglik}</span>
               </div>
             )}
           </div>
@@ -259,31 +259,31 @@ export default function Template3({ data }: TemplateProps) {
         </h3>
         <div className="space-y-1.5 text-sm">
           {data.contact?.phone && (
-            <div className="grid grid-cols-[1fr_auto_2fr] gap-x-2">
-              <span className="font-semibold text-gray-700 text-right">मोबाईल</span>
-              <span>:</span>
-              <span>{data.contact.phone}</span>
+            <div className="flex">
+              <span className="font-semibold text-gray-700 w-32 text-right">मोबाईल</span>
+              <span className="mx-2">:</span>
+              <span className="flex-1">{data.contact.phone}</span>
             </div>
           )}
           {data.contact?.alternatePhone && (
-            <div className="grid grid-cols-[1fr_auto_2fr] gap-x-2">
-              <span className="font-semibold text-gray-700 text-right">पर्यायी मोबाईल</span>
-              <span>:</span>
-              <span>{data.contact.alternatePhone}</span>
+            <div className="flex">
+              <span className="font-semibold text-gray-700 w-32 text-right">पर्यायी मोबाईल</span>
+              <span className="mx-2">:</span>
+              <span className="flex-1">{data.contact.alternatePhone}</span>
             </div>
           )}
           {data.contact?.email && (
-            <div className="grid grid-cols-[1fr_auto_2fr] gap-x-2">
-              <span className="font-semibold text-gray-700 text-right">ईमेल</span>
-              <span>:</span>
-              <span>{data.contact.email}</span>
+            <div className="flex">
+              <span className="font-semibold text-gray-700 w-32 text-right">ईमेल</span>
+              <span className="mx-2">:</span>
+              <span className="flex-1">{data.contact.email}</span>
             </div>
           )}
           {data.contact?.address && (
-            <div className="grid grid-cols-[1fr_auto_2fr] gap-x-2">
-              <span className="font-semibold text-gray-700 text-right">पत्ता</span>
-              <span>:</span>
-              <span>{data.contact.address}</span>
+            <div className="flex">
+              <span className="font-semibold text-gray-700 w-32 text-right">पत्ता</span>
+              <span className="mx-2">:</span>
+              <span className="flex-1">{data.contact.address}</span>
             </div>
           )}
         </div>

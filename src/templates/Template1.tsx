@@ -24,71 +24,71 @@ export default function Template1({ data }: TemplateProps) {
           वैयक्तिक माहिती
         </h3>
         <div className="text-sm space-y-1.5">
-          <div className="grid grid-cols-[1fr_auto_2fr] gap-x-2">
-            <span className="font-semibold text-right">नाव</span>
-            <span>:</span>
-            <span>{data.personalDetails?.fullNameMarathi || data.personalDetails?.fullName || 'N/A'}</span>
+          <div className="flex">
+            <span className="font-semibold w-32 text-right">नाव</span>
+            <span className="mx-2">:</span>
+            <span className="flex-1">{data.personalDetails?.fullNameMarathi || data.personalDetails?.fullName || 'N/A'}</span>
           </div>
-          <div className="grid grid-cols-[1fr_auto_2fr] gap-x-2">
-            <span className="font-semibold text-right">जन्मतारीख</span>
-            <span>:</span>
-            <span>{data.personalDetails?.dateOfBirth || 'N/A'}</span>
+          <div className="flex">
+            <span className="font-semibold w-32 text-right">जन्मतारीख</span>
+            <span className="mx-2">:</span>
+            <span className="flex-1">{data.personalDetails?.dateOfBirth || 'N/A'}</span>
           </div>
           {data.personalDetails?.birthTime && (
-            <div className="grid grid-cols-[1fr_auto_2fr] gap-x-2">
-              <span className="font-semibold text-right">जन्मवेळ</span>
-              <span>:</span>
-              <span>{data.personalDetails.birthTime}</span>
+            <div className="flex">
+              <span className="font-semibold w-32 text-right">जन्मवेळ</span>
+              <span className="mx-2">:</span>
+              <span className="flex-1">{data.personalDetails.birthTime}</span>
             </div>
           )}
-          <div className="grid grid-cols-[1fr_auto_2fr] gap-x-2">
-            <span className="font-semibold text-right">जन्मस्थळ</span>
-            <span>:</span>
-            <span>{data.personalDetails?.birthPlace || 'N/A'}</span>
+          <div className="flex">
+            <span className="font-semibold w-32 text-right">जन्मस्थळ</span>
+            <span className="mx-2">:</span>
+            <span className="flex-1">{data.personalDetails?.birthPlace || 'N/A'}</span>
           </div>
-          <div className="grid grid-cols-[1fr_auto_2fr] gap-x-2">
-            <span className="font-semibold text-right">वय</span>
-            <span>:</span>
-            <span>{data.personalDetails?.age || 'N/A'} वर्षे</span>
+          <div className="flex">
+            <span className="font-semibold w-32 text-right">वय</span>
+            <span className="mx-2">:</span>
+            <span className="flex-1">{data.personalDetails?.age || 'N/A'} वर्षे</span>
           </div>
-          <div className="grid grid-cols-[1fr_auto_2fr] gap-x-2">
-            <span className="font-semibold text-right">उंची</span>
-            <span>:</span>
-            <span>{data.personalDetails?.height || 'N/A'}</span>
+          <div className="flex">
+            <span className="font-semibold w-32 text-right">उंची</span>
+            <span className="mx-2">:</span>
+            <span className="flex-1">{data.personalDetails?.height || 'N/A'}</span>
           </div>
           {data.personalDetails?.bloodGroup && (
-            <div className="grid grid-cols-[1fr_auto_2fr] gap-x-2">
-              <span className="font-semibold text-right">रक्तगट</span>
-              <span>:</span>
-              <span>{data.personalDetails.bloodGroup}</span>
+            <div className="flex">
+              <span className="font-semibold w-32 text-right">रक्तगट</span>
+              <span className="mx-2">:</span>
+              <span className="flex-1">{data.personalDetails.bloodGroup}</span>
             </div>
           )}
           {data.personalDetails?.complexion && (
-            <div className="grid grid-cols-[1fr_auto_2fr] gap-x-2">
-              <span className="font-semibold text-right">रंग</span>
-              <span>:</span>
-              <span>{data.personalDetails.complexion}</span>
+            <div className="flex">
+              <span className="font-semibold w-32 text-right">रंग</span>
+              <span className="mx-2">:</span>
+              <span className="flex-1">{data.personalDetails.complexion}</span>
             </div>
           )}
           {data.personalDetails?.manglik && (
-            <div className="grid grid-cols-[1fr_auto_2fr] gap-x-2">
-              <span className="font-semibold text-right">मांगलिक</span>
-              <span>:</span>
-              <span>{data.personalDetails.manglik}</span>
+            <div className="flex">
+              <span className="font-semibold w-32 text-right">मांगलिक</span>
+              <span className="mx-2">:</span>
+              <span className="flex-1">{data.personalDetails.manglik}</span>
             </div>
           )}
           {data.personalDetails?.gotra && (
-            <div className="grid grid-cols-[1fr_auto_2fr] gap-x-2">
-              <span className="font-semibold text-right">गोत्र</span>
-              <span>:</span>
-              <span>{data.personalDetails.gotra}</span>
+            <div className="flex">
+              <span className="font-semibold w-32 text-right">गोत्र</span>
+              <span className="mx-2">:</span>
+              <span className="flex-1">{data.personalDetails.gotra}</span>
             </div>
           )}
           {data.personalDetails?.devak && (
-            <div className="grid grid-cols-[1fr_auto_2fr] gap-x-2">
-              <span className="font-semibold text-right">देवक</span>
-              <span>:</span>
-              <span>{data.personalDetails.devak}</span>
+            <div className="flex">
+              <span className="font-semibold w-32 text-right">देवक</span>
+              <span className="mx-2">:</span>
+              <span className="flex-1">{data.personalDetails.devak}</span>
             </div>
           )}
         </div>
@@ -100,54 +100,54 @@ export default function Template1({ data }: TemplateProps) {
           कौटुंबिक माहिती
         </h3>
         <div className="text-sm space-y-1.5">
-          <div className="grid grid-cols-[1fr_auto_2fr] gap-x-2">
-            <span className="font-semibold text-right">वडीलांचे नाव</span>
-            <span>:</span>
-            <span>{data.familyDetails?.fatherName || 'N/A'}</span>
+          <div className="flex">
+            <span className="font-semibold w-32 text-right">वडीलांचे नाव</span>
+            <span className="mx-2">:</span>
+            <span className="flex-1">{data.familyDetails?.fatherName || 'N/A'}</span>
           </div>
-          <div className="grid grid-cols-[1fr_auto_2fr] gap-x-2">
-            <span className="font-semibold text-right">वडीलांचा व्यवसाय</span>
-            <span>:</span>
-            <span>{data.familyDetails?.fatherOccupation || 'N/A'}</span>
+          <div className="flex">
+            <span className="font-semibold w-32 text-right">वडीलांचा व्यवसाय</span>
+            <span className="mx-2">:</span>
+            <span className="flex-1">{data.familyDetails?.fatherOccupation || 'N/A'}</span>
           </div>
-          <div className="grid grid-cols-[1fr_auto_2fr] gap-x-2">
-            <span className="font-semibold text-right">आईचे नाव</span>
-            <span>:</span>
-            <span>{data.familyDetails?.motherName || 'N/A'}</span>
+          <div className="flex">
+            <span className="font-semibold w-32 text-right">आईचे नाव</span>
+            <span className="mx-2">:</span>
+            <span className="flex-1">{data.familyDetails?.motherName || 'N/A'}</span>
           </div>
           {data.familyDetails?.motherOccupation && (
-            <div className="grid grid-cols-[1fr_auto_2fr] gap-x-2">
-              <span className="font-semibold text-right">आईचा व्यवसाय</span>
-              <span>:</span>
-              <span>{data.familyDetails.motherOccupation}</span>
+            <div className="flex">
+              <span className="font-semibold w-32 text-right">आईचा व्यवसाय</span>
+              <span className="mx-2">:</span>
+              <span className="flex-1">{data.familyDetails.motherOccupation}</span>
             </div>
           )}
           {data.familyDetails?.brothers !== undefined && (
-            <div className="grid grid-cols-[1fr_auto_2fr] gap-x-2">
-              <span className="font-semibold text-right">भाऊ</span>
-              <span>:</span>
-              <span>{data.familyDetails.brothers} (विवाहित: {data.familyDetails.brothersMarried || 0})</span>
+            <div className="flex">
+              <span className="font-semibold w-32 text-right">भाऊ</span>
+              <span className="mx-2">:</span>
+              <span className="flex-1">{data.familyDetails.brothers} (विवाहित: {data.familyDetails.brothersMarried || 0})</span>
             </div>
           )}
           {data.familyDetails?.sisters !== undefined && (
-            <div className="grid grid-cols-[1fr_auto_2fr] gap-x-2">
-              <span className="font-semibold text-right">बहीण</span>
-              <span>:</span>
-              <span>{data.familyDetails.sisters} (विवाहित: {data.familyDetails.sistersMarried || 0})</span>
+            <div className="flex">
+              <span className="font-semibold w-32 text-right">बहीण</span>
+              <span className="mx-2">:</span>
+              <span className="flex-1">{data.familyDetails.sisters} (विवाहित: {data.familyDetails.sistersMarried || 0})</span>
             </div>
           )}
           {data.familyDetails?.familyType && (
-            <div className="grid grid-cols-[1fr_auto_2fr] gap-x-2">
-              <span className="font-semibold text-right">कुटुंब प्रकार</span>
-              <span>:</span>
-              <span>{data.familyDetails.familyType === 'Joint' ? 'संयुक्त' : 'एकटे'}</span>
+            <div className="flex">
+              <span className="font-semibold w-32 text-right">कुटुंब प्रकार</span>
+              <span className="mx-2">:</span>
+              <span className="flex-1">{data.familyDetails.familyType === 'Joint' ? 'संयुक्त' : 'एकटे'}</span>
             </div>
           )}
           {data.familyDetails?.nativePlace && (
-            <div className="grid grid-cols-[1fr_auto_2fr] gap-x-2">
-              <span className="font-semibold text-right">मूळ गाव</span>
-              <span>:</span>
-              <span>{data.familyDetails.nativePlace}</span>
+            <div className="flex">
+              <span className="font-semibold w-32 text-right">मूळ गाव</span>
+              <span className="mx-2">:</span>
+              <span className="flex-1">{data.familyDetails.nativePlace}</span>
             </div>
           )}
         </div>
@@ -159,35 +159,35 @@ export default function Template1({ data }: TemplateProps) {
           शिक्षण आणि व्यवसाय
         </h3>
         <div className="text-sm space-y-1.5">
-          <div className="grid grid-cols-[1fr_auto_2fr] gap-x-2">
-            <span className="font-semibold text-right">शिक्षण</span>
-            <span>:</span>
-            <span>{data.education?.qualification || 'N/A'}</span>
+          <div className="flex">
+            <span className="font-semibold w-32 text-right">शिक्षण</span>
+            <span className="mx-2">:</span>
+            <span className="flex-1">{data.education?.qualification || 'N/A'}</span>
           </div>
-          <div className="grid grid-cols-[1fr_auto_2fr] gap-x-2">
-            <span className="font-semibold text-right">व्यवसाय</span>
-            <span>:</span>
-            <span>{data.education?.occupation || 'N/A'}</span>
+          <div className="flex">
+            <span className="font-semibold w-32 text-right">व्यवसाय</span>
+            <span className="mx-2">:</span>
+            <span className="flex-1">{data.education?.occupation || 'N/A'}</span>
           </div>
           {data.education?.company && (
-            <div className="grid grid-cols-[1fr_auto_2fr] gap-x-2">
-              <span className="font-semibold text-right">कंपनी</span>
-              <span>:</span>
-              <span>{data.education.company}</span>
+            <div className="flex">
+              <span className="font-semibold w-32 text-right">कंपनी</span>
+              <span className="mx-2">:</span>
+              <span className="flex-1">{data.education.company}</span>
             </div>
           )}
           {data.education?.income && (
-            <div className="grid grid-cols-[1fr_auto_2fr] gap-x-2">
-              <span className="font-semibold text-right">उत्पन्न</span>
-              <span>:</span>
-              <span>{data.education.income}</span>
+            <div className="flex">
+              <span className="font-semibold w-32 text-right">उत्पन्न</span>
+              <span className="mx-2">:</span>
+              <span className="flex-1">{data.education.income}</span>
             </div>
           )}
           {data.education?.workLocation && (
-            <div className="grid grid-cols-[1fr_auto_2fr] gap-x-2">
-              <span className="font-semibold text-right">कामाचे ठिकाण</span>
-              <span>:</span>
-              <span>{data.education.workLocation}</span>
+            <div className="flex">
+              <span className="font-semibold w-32 text-right">कामाचे ठिकाण</span>
+              <span className="mx-2">:</span>
+              <span className="flex-1">{data.education.workLocation}</span>
             </div>
           )}
         </div>
@@ -199,29 +199,29 @@ export default function Template1({ data }: TemplateProps) {
           संपर्क माहिती
         </h3>
         <div className="text-sm space-y-1.5">
-          <div className="grid grid-cols-[1fr_auto_2fr] gap-x-2">
-            <span className="font-semibold text-right">मोबाईल</span>
-            <span>:</span>
-            <span>{data.contact?.phone || 'N/A'}</span>
+          <div className="flex">
+            <span className="font-semibold w-32 text-right">मोबाईल</span>
+            <span className="mx-2">:</span>
+            <span className="flex-1">{data.contact?.phone || 'N/A'}</span>
           </div>
           {data.contact?.alternatePhone && (
-            <div className="grid grid-cols-[1fr_auto_2fr] gap-x-2">
-              <span className="font-semibold text-right">पर्यायी मोबाईल</span>
-              <span>:</span>
-              <span>{data.contact.alternatePhone}</span>
+            <div className="flex">
+              <span className="font-semibold w-32 text-right">पर्यायी मोबाईल</span>
+              <span className="mx-2">:</span>
+              <span className="flex-1">{data.contact.alternatePhone}</span>
             </div>
           )}
           {data.contact?.email && (
-            <div className="grid grid-cols-[1fr_auto_2fr] gap-x-2">
-              <span className="font-semibold text-right">ईमेल</span>
-              <span>:</span>
-              <span>{data.contact.email}</span>
+            <div className="flex">
+              <span className="font-semibold w-32 text-right">ईमेल</span>
+              <span className="mx-2">:</span>
+              <span className="flex-1">{data.contact.email}</span>
             </div>
           )}
-          <div className="grid grid-cols-[1fr_auto_2fr] gap-x-2">
-            <span className="font-semibold text-right">पत्ता</span>
-            <span>:</span>
-            <span>{data.contact?.address || 'N/A'}</span>
+          <div className="flex">
+            <span className="font-semibold w-32 text-right">पत्ता</span>
+            <span className="mx-2">:</span>
+            <span className="flex-1">{data.contact?.address || 'N/A'}</span>
           </div>
         </div>
       </div>
@@ -234,38 +234,38 @@ export default function Template1({ data }: TemplateProps) {
           </h3>
           <div className="text-sm space-y-1.5">
             {data.partnerPreferences.ageRange && (
-              <div className="grid grid-cols-[1fr_auto_2fr] gap-x-2">
-                <span className="font-semibold text-right">वय</span>
-                <span>:</span>
-                <span>{data.partnerPreferences.ageRange}</span>
+              <div className="flex">
+                <span className="font-semibold w-32 text-right">वय</span>
+                <span className="mx-2">:</span>
+                <span className="flex-1">{data.partnerPreferences.ageRange}</span>
               </div>
             )}
             {data.partnerPreferences.heightRange && (
-              <div className="grid grid-cols-[1fr_auto_2fr] gap-x-2">
-                <span className="font-semibold text-right">उंची</span>
-                <span>:</span>
-                <span>{data.partnerPreferences.heightRange}</span>
+              <div className="flex">
+                <span className="font-semibold w-32 text-right">उंची</span>
+                <span className="mx-2">:</span>
+                <span className="flex-1">{data.partnerPreferences.heightRange}</span>
               </div>
             )}
             {data.partnerPreferences.education && (
-              <div className="grid grid-cols-[1fr_auto_2fr] gap-x-2">
-                <span className="font-semibold text-right">शिक्षण</span>
-                <span>:</span>
-                <span>{data.partnerPreferences.education}</span>
+              <div className="flex">
+                <span className="font-semibold w-32 text-right">शिक्षण</span>
+                <span className="mx-2">:</span>
+                <span className="flex-1">{data.partnerPreferences.education}</span>
               </div>
             )}
             {data.partnerPreferences.occupation && (
-              <div className="grid grid-cols-[1fr_auto_2fr] gap-x-2">
-                <span className="font-semibold text-right">व्यवसाय</span>
-                <span>:</span>
-                <span>{data.partnerPreferences.occupation}</span>
+              <div className="flex">
+                <span className="font-semibold w-32 text-right">व्यवसाय</span>
+                <span className="mx-2">:</span>
+                <span className="flex-1">{data.partnerPreferences.occupation}</span>
               </div>
             )}
             {data.partnerPreferences.other && (
-              <div className="grid grid-cols-[1fr_auto_2fr] gap-x-2">
-                <span className="font-semibold text-right">इतर</span>
-                <span>:</span>
-                <span>{data.partnerPreferences.other}</span>
+              <div className="flex">
+                <span className="font-semibold w-32 text-right">इतर</span>
+                <span className="mx-2">:</span>
+                <span className="flex-1">{data.partnerPreferences.other}</span>
               </div>
             )}
           </div>

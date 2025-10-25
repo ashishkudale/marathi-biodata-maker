@@ -53,66 +53,66 @@ export default function Template2({ data }: TemplateProps) {
         </h3>
         <div className="space-y-2 text-sm">
           {data.personalDetails?.dateOfBirth && (
-            <div className="grid grid-cols-[1fr_auto_2fr] gap-x-2">
-              <span className="text-slate-600 text-right">Date of Birth</span>
-              <span className="text-slate-600">:</span>
-              <span className="font-medium text-slate-800">{data.personalDetails.dateOfBirth}</span>
+            <div className="flex">
+              <span className="text-slate-600 w-32 text-right">Date of Birth</span>
+              <span className="text-slate-600 mx-2">:</span>
+              <span className="font-medium text-slate-800 flex-1">{data.personalDetails.dateOfBirth}</span>
             </div>
           )}
           {data.personalDetails?.birthTime && (
-            <div className="grid grid-cols-[1fr_auto_2fr] gap-x-2">
-              <span className="text-slate-600 text-right">Birth Time</span>
-              <span className="text-slate-600">:</span>
-              <span className="font-medium text-slate-800">{data.personalDetails.birthTime}</span>
+            <div className="flex">
+              <span className="text-slate-600 w-32 text-right">Birth Time</span>
+              <span className="text-slate-600 mx-2">:</span>
+              <span className="font-medium text-slate-800 flex-1">{data.personalDetails.birthTime}</span>
             </div>
           )}
           {data.personalDetails?.age && (
-            <div className="grid grid-cols-[1fr_auto_2fr] gap-x-2">
-              <span className="text-slate-600 text-right">Age</span>
-              <span className="text-slate-600">:</span>
-              <span className="font-medium text-slate-800">{data.personalDetails.age} years</span>
+            <div className="flex">
+              <span className="text-slate-600 w-32 text-right">Age</span>
+              <span className="text-slate-600 mx-2">:</span>
+              <span className="font-medium text-slate-800 flex-1">{data.personalDetails.age} years</span>
             </div>
           )}
           {data.personalDetails?.height && (
-            <div className="grid grid-cols-[1fr_auto_2fr] gap-x-2">
-              <span className="text-slate-600 text-right">Height</span>
-              <span className="text-slate-600">:</span>
-              <span className="font-medium text-slate-800">{data.personalDetails.height}</span>
+            <div className="flex">
+              <span className="text-slate-600 w-32 text-right">Height</span>
+              <span className="text-slate-600 mx-2">:</span>
+              <span className="font-medium text-slate-800 flex-1">{data.personalDetails.height}</span>
             </div>
           )}
           {data.personalDetails?.bloodGroup && (
-            <div className="grid grid-cols-[1fr_auto_2fr] gap-x-2">
-              <span className="text-slate-600 text-right">Blood Group</span>
-              <span className="text-slate-600">:</span>
-              <span className="font-medium text-slate-800">{data.personalDetails.bloodGroup}</span>
+            <div className="flex">
+              <span className="text-slate-600 w-32 text-right">Blood Group</span>
+              <span className="text-slate-600 mx-2">:</span>
+              <span className="font-medium text-slate-800 flex-1">{data.personalDetails.bloodGroup}</span>
             </div>
           )}
           {data.personalDetails?.complexion && (
-            <div className="grid grid-cols-[1fr_auto_2fr] gap-x-2">
-              <span className="text-slate-600 text-right">Complexion</span>
-              <span className="text-slate-600">:</span>
-              <span className="font-medium text-slate-800">{data.personalDetails.complexion}</span>
+            <div className="flex">
+              <span className="text-slate-600 w-32 text-right">Complexion</span>
+              <span className="text-slate-600 mx-2">:</span>
+              <span className="font-medium text-slate-800 flex-1">{data.personalDetails.complexion}</span>
             </div>
           )}
           {data.personalDetails?.manglik && (
-            <div className="grid grid-cols-[1fr_auto_2fr] gap-x-2">
-              <span className="text-slate-600 text-right">Manglik</span>
-              <span className="text-slate-600">:</span>
-              <span className="font-medium text-slate-800">{data.personalDetails.manglik}</span>
+            <div className="flex">
+              <span className="text-slate-600 w-32 text-right">Manglik</span>
+              <span className="text-slate-600 mx-2">:</span>
+              <span className="font-medium text-slate-800 flex-1">{data.personalDetails.manglik}</span>
             </div>
           )}
           {data.personalDetails?.gotra && (
-            <div className="grid grid-cols-[1fr_auto_2fr] gap-x-2">
-              <span className="text-slate-600 text-right">Gotra</span>
-              <span className="text-slate-600">:</span>
-              <span className="font-medium text-slate-800">{data.personalDetails.gotra}</span>
+            <div className="flex">
+              <span className="text-slate-600 w-32 text-right">Gotra</span>
+              <span className="text-slate-600 mx-2">:</span>
+              <span className="font-medium text-slate-800 flex-1">{data.personalDetails.gotra}</span>
             </div>
           )}
           {data.personalDetails?.devak && (
-            <div className="grid grid-cols-[1fr_auto_2fr] gap-x-2">
-              <span className="text-slate-600 text-right">Devak</span>
-              <span className="text-slate-600">:</span>
-              <span className="font-medium text-slate-800">{data.personalDetails.devak}</span>
+            <div className="flex">
+              <span className="text-slate-600 w-32 text-right">Devak</span>
+              <span className="text-slate-600 mx-2">:</span>
+              <span className="font-medium text-slate-800 flex-1">{data.personalDetails.devak}</span>
             </div>
           )}
         </div>
@@ -125,38 +125,38 @@ export default function Template2({ data }: TemplateProps) {
         </h3>
         <div className="space-y-2 text-sm">
           {data.education?.qualification && (
-            <div className="grid grid-cols-[1fr_auto_2fr] gap-x-2">
-              <span className="text-slate-600 text-right">Education</span>
-              <span className="text-slate-600">:</span>
-              <span className="font-medium text-slate-800">{data.education.qualification}</span>
+            <div className="flex">
+              <span className="text-slate-600 w-32 text-right">Education</span>
+              <span className="text-slate-600 mx-2">:</span>
+              <span className="font-medium text-slate-800 flex-1">{data.education.qualification}</span>
             </div>
           )}
           {data.education?.occupation && (
-            <div className="grid grid-cols-[1fr_auto_2fr] gap-x-2">
-              <span className="text-slate-600 text-right">Occupation</span>
-              <span className="text-slate-600">:</span>
-              <span className="font-medium text-slate-800">{data.education.occupation}</span>
+            <div className="flex">
+              <span className="text-slate-600 w-32 text-right">Occupation</span>
+              <span className="text-slate-600 mx-2">:</span>
+              <span className="font-medium text-slate-800 flex-1">{data.education.occupation}</span>
             </div>
           )}
           {data.education?.company && (
-            <div className="grid grid-cols-[1fr_auto_2fr] gap-x-2">
-              <span className="text-slate-600 text-right">Company</span>
-              <span className="text-slate-600">:</span>
-              <span className="font-medium text-slate-800">{data.education.company}</span>
+            <div className="flex">
+              <span className="text-slate-600 w-32 text-right">Company</span>
+              <span className="text-slate-600 mx-2">:</span>
+              <span className="font-medium text-slate-800 flex-1">{data.education.company}</span>
             </div>
           )}
           {data.education?.income && (
-            <div className="grid grid-cols-[1fr_auto_2fr] gap-x-2">
-              <span className="text-slate-600 text-right">Income</span>
-              <span className="text-slate-600">:</span>
-              <span className="font-medium text-slate-800">{data.education.income}</span>
+            <div className="flex">
+              <span className="text-slate-600 w-32 text-right">Income</span>
+              <span className="text-slate-600 mx-2">:</span>
+              <span className="font-medium text-slate-800 flex-1">{data.education.income}</span>
             </div>
           )}
           {data.education?.workLocation && (
-            <div className="grid grid-cols-[1fr_auto_2fr] gap-x-2">
-              <span className="text-slate-600 text-right">Location</span>
-              <span className="text-slate-600">:</span>
-              <span className="font-medium text-slate-800">{data.education.workLocation}</span>
+            <div className="flex">
+              <span className="text-slate-600 w-32 text-right">Location</span>
+              <span className="text-slate-600 mx-2">:</span>
+              <span className="font-medium text-slate-800 flex-1">{data.education.workLocation}</span>
             </div>
           )}
         </div>
@@ -169,10 +169,10 @@ export default function Template2({ data }: TemplateProps) {
         </h3>
         <div className="space-y-2 text-sm">
           {data.familyDetails?.fatherName && (
-            <div className="grid grid-cols-[1fr_auto_2fr] gap-x-2">
-              <span className="text-slate-600 text-right">Father</span>
-              <span className="text-slate-600">:</span>
-              <span className="font-medium text-slate-800">
+            <div className="flex">
+              <span className="text-slate-600 w-32 text-right">Father</span>
+              <span className="text-slate-600 mx-2">:</span>
+              <span className="font-medium text-slate-800 flex-1">
                 {data.familyDetails.fatherName}
                 {data.familyDetails.fatherOccupation && (
                   <span className="text-slate-600 font-normal"> ({data.familyDetails.fatherOccupation})</span>
@@ -181,10 +181,10 @@ export default function Template2({ data }: TemplateProps) {
             </div>
           )}
           {data.familyDetails?.motherName && (
-            <div className="grid grid-cols-[1fr_auto_2fr] gap-x-2">
-              <span className="text-slate-600 text-right">Mother</span>
-              <span className="text-slate-600">:</span>
-              <span className="font-medium text-slate-800">
+            <div className="flex">
+              <span className="text-slate-600 w-32 text-right">Mother</span>
+              <span className="text-slate-600 mx-2">:</span>
+              <span className="font-medium text-slate-800 flex-1">
                 {data.familyDetails.motherName}
                 {data.familyDetails.motherOccupation && (
                   <span className="text-slate-600 font-normal"> ({data.familyDetails.motherOccupation})</span>
@@ -193,35 +193,35 @@ export default function Template2({ data }: TemplateProps) {
             </div>
           )}
           {data.familyDetails?.brothers !== undefined && (
-            <div className="grid grid-cols-[1fr_auto_2fr] gap-x-2">
-              <span className="text-slate-600 text-right">Brothers</span>
-              <span className="text-slate-600">:</span>
-              <span className="font-medium text-slate-800">
+            <div className="flex">
+              <span className="text-slate-600 w-32 text-right">Brothers</span>
+              <span className="text-slate-600 mx-2">:</span>
+              <span className="font-medium text-slate-800 flex-1">
                 {data.familyDetails.brothers} (Married: {data.familyDetails.brothersMarried || 0})
               </span>
             </div>
           )}
           {data.familyDetails?.sisters !== undefined && (
-            <div className="grid grid-cols-[1fr_auto_2fr] gap-x-2">
-              <span className="text-slate-600 text-right">Sisters</span>
-              <span className="text-slate-600">:</span>
-              <span className="font-medium text-slate-800">
+            <div className="flex">
+              <span className="text-slate-600 w-32 text-right">Sisters</span>
+              <span className="text-slate-600 mx-2">:</span>
+              <span className="font-medium text-slate-800 flex-1">
                 {data.familyDetails.sisters} (Married: {data.familyDetails.sistersMarried || 0})
               </span>
             </div>
           )}
           {data.familyDetails?.familyType && (
-            <div className="grid grid-cols-[1fr_auto_2fr] gap-x-2">
-              <span className="text-slate-600 text-right">Family Type</span>
-              <span className="text-slate-600">:</span>
-              <span className="font-medium text-slate-800">{data.familyDetails.familyType}</span>
+            <div className="flex">
+              <span className="text-slate-600 w-32 text-right">Family Type</span>
+              <span className="text-slate-600 mx-2">:</span>
+              <span className="font-medium text-slate-800 flex-1">{data.familyDetails.familyType}</span>
             </div>
           )}
           {data.familyDetails?.nativePlace && (
-            <div className="grid grid-cols-[1fr_auto_2fr] gap-x-2">
-              <span className="text-slate-600 text-right">Native Place</span>
-              <span className="text-slate-600">:</span>
-              <span className="font-medium text-slate-800">{data.familyDetails.nativePlace}</span>
+            <div className="flex">
+              <span className="text-slate-600 w-32 text-right">Native Place</span>
+              <span className="text-slate-600 mx-2">:</span>
+              <span className="font-medium text-slate-800 flex-1">{data.familyDetails.nativePlace}</span>
             </div>
           )}
         </div>
@@ -234,31 +234,31 @@ export default function Template2({ data }: TemplateProps) {
         </h3>
         <div className="space-y-2 text-sm">
           {data.contact?.phone && (
-            <div className="grid grid-cols-[1fr_auto_2fr] gap-x-2">
-              <span className="text-slate-600 text-right">Phone</span>
-              <span className="text-slate-600">:</span>
-              <span className="font-medium text-slate-800">{data.contact.phone}</span>
+            <div className="flex">
+              <span className="text-slate-600 w-32 text-right">Phone</span>
+              <span className="text-slate-600 mx-2">:</span>
+              <span className="font-medium text-slate-800 flex-1">{data.contact.phone}</span>
             </div>
           )}
           {data.contact?.alternatePhone && (
-            <div className="grid grid-cols-[1fr_auto_2fr] gap-x-2">
-              <span className="text-slate-600 text-right">Alternate Phone</span>
-              <span className="text-slate-600">:</span>
-              <span className="font-medium text-slate-800">{data.contact.alternatePhone}</span>
+            <div className="flex">
+              <span className="text-slate-600 w-32 text-right">Alternate Phone</span>
+              <span className="text-slate-600 mx-2">:</span>
+              <span className="font-medium text-slate-800 flex-1">{data.contact.alternatePhone}</span>
             </div>
           )}
           {data.contact?.email && (
-            <div className="grid grid-cols-[1fr_auto_2fr] gap-x-2">
-              <span className="text-slate-600 text-right">Email</span>
-              <span className="text-slate-600">:</span>
-              <span className="font-medium text-slate-800">{data.contact.email}</span>
+            <div className="flex">
+              <span className="text-slate-600 w-32 text-right">Email</span>
+              <span className="text-slate-600 mx-2">:</span>
+              <span className="font-medium text-slate-800 flex-1">{data.contact.email}</span>
             </div>
           )}
           {data.contact?.address && (
-            <div className="grid grid-cols-[1fr_auto_2fr] gap-x-2">
-              <span className="text-slate-600 text-right">Address</span>
-              <span className="text-slate-600">:</span>
-              <span className="font-medium text-slate-800">{data.contact.address}</span>
+            <div className="flex">
+              <span className="text-slate-600 w-32 text-right">Address</span>
+              <span className="text-slate-600 mx-2">:</span>
+              <span className="font-medium text-slate-800 flex-1">{data.contact.address}</span>
             </div>
           )}
         </div>

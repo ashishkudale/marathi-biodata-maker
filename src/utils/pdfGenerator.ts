@@ -1,24 +1,43 @@
 import { BiodataData } from '@/lib/types';
+import html2canvas from 'html2canvas';
+import jsPDF from 'jspdf';
 
 export async function generatePDF(data: Partial<BiodataData>): Promise<Blob> {
-  // For MVP, we'll use browser's print to PDF functionality
-  // This is the simplest and most reliable method without additional dependencies
-
   const element = document.getElementById('biodata-preview');
 
   if (!element) {
     throw new Error('Preview element not found');
   }
 
-  // Using browser's print to PDF as simplest MVP solution
-  window.print();
+  try {
+    // Capture the preview element as canvas
+    const canvas = await html2canvas(element, {
+      scale: 2, // Higher quality
+      useCORS: true,
+      logging: false,
+      backgroundColor: '#ffffff',
+    });
 
-  // For production, you can upgrade to use libraries like:
-  // - @react-pdf/renderer (already installed)
-  // - jsPDF
-  // - html2canvas + jsPDF
+    // Calculate PDF dimensions
+    const imgWidth = 210; // A4 width in mm
+    const imgHeight = (canvas.height * imgWidth) / canvas.width;
 
-  return new Blob();
+    // Create PDF
+    const pdf = new jsPDF({
+      orientation: imgHeight > imgWidth ? 'portrait' : 'portrait',
+      unit: 'mm',
+      format: 'a4',
+    });
+
+    const imgData = canvas.toDataURL('image/png');
+    pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
+
+    // Return as Blob
+    return pdf.output('blob');
+  } catch (error) {
+    console.error('Error generating PDF:', error);
+    throw new Error('Failed to generate PDF');
+  }
 }
 
 export function downloadPDF(blob: Blob, filename: string) {
