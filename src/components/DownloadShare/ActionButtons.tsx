@@ -3,7 +3,7 @@
 import { useBiodataStore } from '@/lib/store';
 import { FiDownload, FiShare2, FiPrinter } from 'react-icons/fi';
 import { useState } from 'react';
-import { generateFileName } from '@/utils/pdfGenerator';
+import { generatePDF, downloadPDF, generateFileName } from '@/utils/pdfGenerator';
 
 export default function ActionButtons() {
   const { biodataData } = useBiodataStore();
@@ -12,14 +12,15 @@ export default function ActionButtons() {
   const handleDownloadPDF = async () => {
     setIsDownloading(true);
     try {
-      // Trigger browser print dialog
-      // User can choose "Save as PDF" in the print dialog
-      window.print();
+      // Generate PDF from preview
+      const pdfBlob = await generatePDF(biodataData);
+      const fileName = generateFileName(biodataData);
+      downloadPDF(pdfBlob, fileName);
     } catch (error) {
       console.error('Download failed:', error);
-      alert('Failed to open print dialog');
+      alert('Failed to download PDF. Please try again.');
     } finally {
-      setTimeout(() => setIsDownloading(false), 1000);
+      setIsDownloading(false);
     }
   };
 
@@ -65,7 +66,7 @@ export default function ActionButtons() {
           className="flex-1 bg-orange-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-orange-600 transition disabled:opacity-50 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl"
         >
           <FiDownload className="w-5 h-5" />
-          {isDownloading ? 'Opening...' : 'Download PDF'}
+          {isDownloading ? 'Generating PDF...' : 'Download PDF'}
         </button>
 
         <button
@@ -86,7 +87,7 @@ export default function ActionButtons() {
       </button>
 
       <div className="text-center text-sm text-gray-600 mt-4">
-        <p>💡 Tip: Use &quot;Save as PDF&quot; in the print dialog to download</p>
+        <p>💡 Tip: Click &quot;Download PDF&quot; to save your biodata</p>
       </div>
     </div>
   );
