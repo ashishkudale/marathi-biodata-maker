@@ -8,6 +8,9 @@ export default function FamilyDetailsStep() {
   const handleChange = (field: string, value: any) => {
     updateBiodata({
       familyDetails: {
+        fatherName: biodataData.familyDetails?.fatherName || '',
+        fatherOccupation: biodataData.familyDetails?.fatherOccupation || '',
+        motherName: biodataData.familyDetails?.motherName || '',
         ...biodataData.familyDetails,
         [field]: value,
       },

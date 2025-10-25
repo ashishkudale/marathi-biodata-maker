@@ -8,6 +8,11 @@ export default function PersonalDetailsStep() {
   const handleChange = (field: string, value: any) => {
     updateBiodata({
       personalDetails: {
+        fullName: biodataData.personalDetails?.fullName || '',
+        dateOfBirth: biodataData.personalDetails?.dateOfBirth || '',
+        birthPlace: biodataData.personalDetails?.birthPlace || '',
+        age: biodataData.personalDetails?.age || 0,
+        height: biodataData.personalDetails?.height || '',
         ...biodataData.personalDetails,
         [field]: value,
       },

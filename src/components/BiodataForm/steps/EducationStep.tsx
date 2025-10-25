@@ -8,6 +8,8 @@ export default function EducationStep() {
   const handleChange = (field: string, value: any) => {
     updateBiodata({
       education: {
+        qualification: biodataData.education?.qualification || '',
+        occupation: biodataData.education?.occupation || '',
         ...biodataData.education,
         [field]: value,
       },

@@ -8,6 +8,8 @@ export default function ContactStep() {
   const handleChange = (field: string, value: any) => {
     updateBiodata({
       contact: {
+        phone: biodataData.contact?.phone || '',
+        address: biodataData.contact?.address || '',
         ...biodataData.contact,
         [field]: value,
       },
