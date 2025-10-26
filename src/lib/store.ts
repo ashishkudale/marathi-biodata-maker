@@ -1,5 +1,6 @@
 import { create } from 'zustand';
 import { BiodataData } from './types';
+import { saveToLocalStorage, loadFromLocalStorage } from './biodataService';
 
 interface BiodataStore {
   biodataData: Partial<BiodataData>;
@@ -7,66 +8,78 @@ interface BiodataStore {
   updateBiodata: (data: Partial<BiodataData>) => void;
   setStep: (step: number) => void;
   resetBiodata: () => void;
+  loadDraft: () => void;
 }
 
 export const useBiodataStore = create<BiodataStore>((set) => ({
   biodataData: {
     personalDetails: {
-      fullName: 'Ashish Ramesh Patil',
-      fullNameMarathi: 'आशीष रमेश पाटील',
-      dateOfBirth: '1992-12-08',
-      birthTime: '19:24',
-      birthPlace: 'पुणे',
-      age: 32,
-      height: '5\'8"',
-      bloodGroup: 'B+',
-      complexion: 'Fair',
-      manglik: 'No',
-      gotra: 'कश्यप',
-      devak: 'तुळशी',
+      fullName: '',
+      fullNameMarathi: '',
+      dateOfBirth: '',
+      birthTime: '',
+      birthPlace: '',
+      age: 0,
+      height: '',
+      bloodGroup: '',
+      complexion: '',
+      manglik: undefined,
+      gotra: '',
+      devak: '',
     },
     familyDetails: {
-      fatherName: 'रमेश गणपत पाटील',
-      fatherOccupation: 'व्यापार',
-      motherName: 'सुनीता रमेश पाटील',
-      motherOccupation: 'गृहिणी',
-      brothers: 1,
+      fatherName: '',
+      fatherOccupation: '',
+      motherName: '',
+      motherOccupation: '',
+      brothers: 0,
       brothersMarried: 0,
-      sisters: 1,
-      sistersMarried: 1,
-      familyType: 'Joint',
-      nativePlace: 'सातारा',
+      sisters: 0,
+      sistersMarried: 0,
+      familyType: undefined,
+      nativePlace: '',
     },
     education: {
-      qualification: 'B.Tech Computer Science',
-      occupation: 'Software Engineer',
-      company: 'TCS Pune',
-      income: '12 LPA',
-      workLocation: 'पुणे',
+      qualification: '',
+      occupation: '',
+      company: '',
+      income: '',
+      workLocation: '',
     },
     contact: {
-      phone: '+91 98765 43210',
-      alternatePhone: '+91 87654 32109',
-      email: 'ashish.patil@email.com',
-      address: 'कर्वे नगर, पुणे - 411052',
+      phone: '',
+      alternatePhone: '',
+      email: '',
+      address: '',
     },
     partnerPreferences: {
-      ageRange: '25-30 years',
-      heightRange: '5\'2" - 5\'6"',
-      education: 'Graduate or above',
-      occupation: 'Any professional',
-      other: 'Family oriented, cultured',
+      ageRange: '',
+      heightRange: '',
+      education: '',
+      occupation: '',
+      other: '',
     },
-    aboutMe: 'मी एक सॉफ्टवेअर इंजिनीअर आहे. माझे कुटुंब पारंपारिक आहे. मला वाचन, संगीत ऐकणे आणि प्रवास करणे आवडते.',
+    aboutMe: '',
     templateId: 'template-1',
     language: 'both',
   },
   currentStep: 0,
   updateBiodata: (data) =>
-    set((state) => ({
-      biodataData: { ...state.biodataData, ...data },
-    })),
+    set((state) => {
+      const updatedData = { ...state.biodataData, ...data };
+      // Auto-save to localStorage
+      saveToLocalStorage(updatedData);
+      return { biodataData: updatedData };
+    }),
   setStep: (step) => set({ currentStep: step }),
+  loadDraft: () =>
+    set(() => {
+      const draft = loadFromLocalStorage();
+      if (draft) {
+        return { biodataData: draft, currentStep: 0 };
+      }
+      return {};
+    }),
   resetBiodata: () =>
     set({
       biodataData: {

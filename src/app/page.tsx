@@ -1,9 +1,18 @@
 import Link from 'next/link';
 import { FiEdit3, FiDownload, FiShare2, FiLayout } from 'react-icons/fi';
+import UserMenu from '@/components/Auth/UserMenu';
 
 export default function Home() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-orange-50 to-white">
+      {/* Navigation Header */}
+      <nav className="container mx-auto px-4 py-6 flex justify-between items-center">
+        <Link href="/" className="text-2xl font-bold text-orange-500">
+          Marathi Biodata
+        </Link>
+        <UserMenu />
+      </nav>
+
       {/* Hero Section */}
       <div className="container mx-auto px-4 py-16">
         <div className="text-center max-w-4xl mx-auto">
