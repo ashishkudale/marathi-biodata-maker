@@ -4,11 +4,13 @@ import { useBiodataStore } from '@/lib/store';
 import Template1 from '@/templates/Template1';
 import Template2 from '@/templates/Template2';
 import Template3 from '@/templates/Template3';
+import Template4 from '@/templates/Template4';
 
 const templates: { [key: string]: React.ComponentType<any> } = {
   'template-1': Template1,
   'template-2': Template2,
   'template-3': Template3,
+  'template-4': Template4,
 };
 
 export default function PreviewPanel() {
@@ -23,7 +25,7 @@ export default function PreviewPanel() {
       </div>
 
       {/* Preview with ID for print targeting */}
-      <div id="biodata-preview" className="bg-white rounded-lg shadow-md transform scale-90 origin-top">
+      <div id="biodata-preview" className="bg-white rounded-lg shadow-md">
         <TemplateComponent data={biodataData} />
       </div>
     </div>

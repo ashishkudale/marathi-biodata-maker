@@ -1,6 +1,13 @@
 export interface BiodataData {
   id?: string;
   userId?: string;  // User ID for linking biodata to authenticated users
+
+  // Header Customization
+  header?: {
+    text: string;  // The deity/header text
+    showSymbols: boolean;  // Whether to show || symbols
+  };
+
   // Personal Details
   personalDetails: {
     fullName: string;

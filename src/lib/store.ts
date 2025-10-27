@@ -13,6 +13,10 @@ interface BiodataStore {
 
 export const useBiodataStore = create<BiodataStore>((set) => ({
   biodataData: {
+    header: {
+      text: 'श्री गणेशाय नमः',
+      showSymbols: true,
+    },
     personalDetails: {
       fullName: '',
       fullNameMarathi: '',
@@ -83,6 +87,10 @@ export const useBiodataStore = create<BiodataStore>((set) => ({
   resetBiodata: () =>
     set({
       biodataData: {
+        header: {
+          text: 'श्री गणेशाय नमः',
+          showSymbols: true,
+        },
         personalDetails: {
           fullName: '',
           fullNameMarathi: '',

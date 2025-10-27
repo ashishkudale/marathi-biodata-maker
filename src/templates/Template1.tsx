@@ -6,12 +6,21 @@ interface TemplateProps {
 
 export default function Template1({ data }: TemplateProps) {
   return (
-    <div className="w-full max-w-2xl mx-auto bg-white p-8 font-marathi">
+    <div className="w-full max-w-2xl mx-auto bg-white p-8 font-marathi text-center">
       {/* Header */}
       <div className="text-center border-b-4 border-orange-500 pb-4 mb-6">
-        <h1 className="text-3xl font-bold text-orange-600 mb-2">
-          || श्री गणेशाय नमः ||
-        </h1>
+        {data.header?.text && (
+          <h1 className="text-3xl font-bold text-orange-600 mb-2">
+            {data.header.showSymbols && '|| '}
+            {data.header.text}
+            {data.header.showSymbols && ' ||'}
+          </h1>
+        )}
+        {!data.header?.text && (
+          <h1 className="text-3xl font-bold text-orange-600 mb-2">
+            || श्री गणेशाय नमः ||
+          </h1>
+        )}
         <h2 className="text-2xl font-semibold text-gray-800">
           विवाह सूचक माहिती पत्रक
         </h2>
@@ -24,71 +33,71 @@ export default function Template1({ data }: TemplateProps) {
           वैयक्तिक माहिती
         </h3>
         <div className="text-sm space-y-1.5">
-          <div className="flex">
-            <span className="font-semibold w-32 text-right">नाव</span>
+          <div>
+            <span className="font-semibold">नाव</span>
             <span className="mx-2">:</span>
-            <span className="flex-1">{data.personalDetails?.fullNameMarathi || data.personalDetails?.fullName || 'N/A'}</span>
+            <span>{data.personalDetails?.fullNameMarathi || data.personalDetails?.fullName || 'N/A'}</span>
           </div>
-          <div className="flex">
-            <span className="font-semibold w-32 text-right">जन्मतारीख</span>
+          <div>
+            <span className="font-semibold">जन्मतारीख</span>
             <span className="mx-2">:</span>
-            <span className="flex-1">{data.personalDetails?.dateOfBirth || 'N/A'}</span>
+            <span>{data.personalDetails?.dateOfBirth || 'N/A'}</span>
           </div>
           {data.personalDetails?.birthTime && (
-            <div className="flex">
-              <span className="font-semibold w-32 text-right">जन्मवेळ</span>
+            <div>
+              <span className="font-semibold">जन्मवेळ</span>
               <span className="mx-2">:</span>
-              <span className="flex-1">{data.personalDetails.birthTime}</span>
+              <span>{data.personalDetails.birthTime}</span>
             </div>
           )}
-          <div className="flex">
-            <span className="font-semibold w-32 text-right">जन्मस्थळ</span>
+          <div>
+            <span className="font-semibold">जन्मस्थळ</span>
             <span className="mx-2">:</span>
-            <span className="flex-1">{data.personalDetails?.birthPlace || 'N/A'}</span>
+            <span>{data.personalDetails?.birthPlace || 'N/A'}</span>
           </div>
-          <div className="flex">
-            <span className="font-semibold w-32 text-right">वय</span>
+          <div>
+            <span className="font-semibold">वय</span>
             <span className="mx-2">:</span>
-            <span className="flex-1">{data.personalDetails?.age || 'N/A'} वर्षे</span>
+            <span>{data.personalDetails?.age || 'N/A'} वर्षे</span>
           </div>
-          <div className="flex">
-            <span className="font-semibold w-32 text-right">उंची</span>
+          <div>
+            <span className="font-semibold">उंची</span>
             <span className="mx-2">:</span>
-            <span className="flex-1">{data.personalDetails?.height || 'N/A'}</span>
+            <span>{data.personalDetails?.height || 'N/A'}</span>
           </div>
           {data.personalDetails?.bloodGroup && (
-            <div className="flex">
-              <span className="font-semibold w-32 text-right">रक्तगट</span>
+            <div>
+              <span className="font-semibold">रक्तगट</span>
               <span className="mx-2">:</span>
-              <span className="flex-1">{data.personalDetails.bloodGroup}</span>
+              <span>{data.personalDetails.bloodGroup}</span>
             </div>
           )}
           {data.personalDetails?.complexion && (
-            <div className="flex">
-              <span className="font-semibold w-32 text-right">रंग</span>
+            <div>
+              <span className="font-semibold">रंग</span>
               <span className="mx-2">:</span>
-              <span className="flex-1">{data.personalDetails.complexion}</span>
+              <span>{data.personalDetails.complexion}</span>
             </div>
           )}
           {data.personalDetails?.manglik && (
-            <div className="flex">
-              <span className="font-semibold w-32 text-right">मांगलिक</span>
+            <div>
+              <span className="font-semibold">मांगलिक</span>
               <span className="mx-2">:</span>
-              <span className="flex-1">{data.personalDetails.manglik}</span>
+              <span>{data.personalDetails.manglik}</span>
             </div>
           )}
           {data.personalDetails?.gotra && (
-            <div className="flex">
-              <span className="font-semibold w-32 text-right">गोत्र</span>
+            <div>
+              <span className="font-semibold">गोत्र</span>
               <span className="mx-2">:</span>
-              <span className="flex-1">{data.personalDetails.gotra}</span>
+              <span>{data.personalDetails.gotra}</span>
             </div>
           )}
           {data.personalDetails?.devak && (
-            <div className="flex">
-              <span className="font-semibold w-32 text-right">देवक</span>
+            <div>
+              <span className="font-semibold">देवक</span>
               <span className="mx-2">:</span>
-              <span className="flex-1">{data.personalDetails.devak}</span>
+              <span>{data.personalDetails.devak}</span>
             </div>
           )}
         </div>
@@ -100,54 +109,54 @@ export default function Template1({ data }: TemplateProps) {
           कौटुंबिक माहिती
         </h3>
         <div className="text-sm space-y-1.5">
-          <div className="flex">
-            <span className="font-semibold w-32 text-right">वडीलांचे नाव</span>
+          <div>
+            <span className="font-semibold">वडीलांचे नाव</span>
             <span className="mx-2">:</span>
-            <span className="flex-1">{data.familyDetails?.fatherName || 'N/A'}</span>
+            <span>{data.familyDetails?.fatherName || 'N/A'}</span>
           </div>
-          <div className="flex">
-            <span className="font-semibold w-32 text-right">वडीलांचा व्यवसाय</span>
+          <div>
+            <span className="font-semibold">वडीलांचा व्यवसाय</span>
             <span className="mx-2">:</span>
-            <span className="flex-1">{data.familyDetails?.fatherOccupation || 'N/A'}</span>
+            <span>{data.familyDetails?.fatherOccupation || 'N/A'}</span>
           </div>
-          <div className="flex">
-            <span className="font-semibold w-32 text-right">आईचे नाव</span>
+          <div>
+            <span className="font-semibold">आईचे नाव</span>
             <span className="mx-2">:</span>
-            <span className="flex-1">{data.familyDetails?.motherName || 'N/A'}</span>
+            <span>{data.familyDetails?.motherName || 'N/A'}</span>
           </div>
           {data.familyDetails?.motherOccupation && (
-            <div className="flex">
-              <span className="font-semibold w-32 text-right">आईचा व्यवसाय</span>
+            <div>
+              <span className="font-semibold">आईचा व्यवसाय</span>
               <span className="mx-2">:</span>
-              <span className="flex-1">{data.familyDetails.motherOccupation}</span>
+              <span>{data.familyDetails.motherOccupation}</span>
             </div>
           )}
           {data.familyDetails?.brothers !== undefined && (
-            <div className="flex">
-              <span className="font-semibold w-32 text-right">भाऊ</span>
+            <div>
+              <span className="font-semibold">भाऊ</span>
               <span className="mx-2">:</span>
-              <span className="flex-1">{data.familyDetails.brothers} (विवाहित: {data.familyDetails.brothersMarried || 0})</span>
+              <span>{data.familyDetails.brothers} (विवाहित: {data.familyDetails.brothersMarried || 0})</span>
             </div>
           )}
           {data.familyDetails?.sisters !== undefined && (
-            <div className="flex">
-              <span className="font-semibold w-32 text-right">बहीण</span>
+            <div>
+              <span className="font-semibold">बहीण</span>
               <span className="mx-2">:</span>
-              <span className="flex-1">{data.familyDetails.sisters} (विवाहित: {data.familyDetails.sistersMarried || 0})</span>
+              <span>{data.familyDetails.sisters} (विवाहित: {data.familyDetails.sistersMarried || 0})</span>
             </div>
           )}
           {data.familyDetails?.familyType && (
-            <div className="flex">
-              <span className="font-semibold w-32 text-right">कुटुंब प्रकार</span>
+            <div>
+              <span className="font-semibold">कुटुंब प्रकार</span>
               <span className="mx-2">:</span>
-              <span className="flex-1">{data.familyDetails.familyType === 'Joint' ? 'संयुक्त' : 'एकटे'}</span>
+              <span>{data.familyDetails.familyType === 'Joint' ? 'संयुक्त' : 'एकटे'}</span>
             </div>
           )}
           {data.familyDetails?.nativePlace && (
-            <div className="flex">
-              <span className="font-semibold w-32 text-right">मूळ गाव</span>
+            <div>
+              <span className="font-semibold">मूळ गाव</span>
               <span className="mx-2">:</span>
-              <span className="flex-1">{data.familyDetails.nativePlace}</span>
+              <span>{data.familyDetails.nativePlace}</span>
             </div>
           )}
         </div>
@@ -159,35 +168,35 @@ export default function Template1({ data }: TemplateProps) {
           शिक्षण आणि व्यवसाय
         </h3>
         <div className="text-sm space-y-1.5">
-          <div className="flex">
-            <span className="font-semibold w-32 text-right">शिक्षण</span>
+          <div>
+            <span className="font-semibold">शिक्षण</span>
             <span className="mx-2">:</span>
-            <span className="flex-1">{data.education?.qualification || 'N/A'}</span>
+            <span>{data.education?.qualification || 'N/A'}</span>
           </div>
-          <div className="flex">
-            <span className="font-semibold w-32 text-right">व्यवसाय</span>
+          <div>
+            <span className="font-semibold">व्यवसाय</span>
             <span className="mx-2">:</span>
-            <span className="flex-1">{data.education?.occupation || 'N/A'}</span>
+            <span>{data.education?.occupation || 'N/A'}</span>
           </div>
           {data.education?.company && (
-            <div className="flex">
-              <span className="font-semibold w-32 text-right">कंपनी</span>
+            <div>
+              <span className="font-semibold">कंपनी</span>
               <span className="mx-2">:</span>
-              <span className="flex-1">{data.education.company}</span>
+              <span>{data.education.company}</span>
             </div>
           )}
           {data.education?.income && (
-            <div className="flex">
-              <span className="font-semibold w-32 text-right">उत्पन्न</span>
+            <div>
+              <span className="font-semibold">उत्पन्न</span>
               <span className="mx-2">:</span>
-              <span className="flex-1">{data.education.income}</span>
+              <span>{data.education.income}</span>
             </div>
           )}
           {data.education?.workLocation && (
-            <div className="flex">
-              <span className="font-semibold w-32 text-right">कामाचे ठिकाण</span>
+            <div>
+              <span className="font-semibold">कामाचे ठिकाण</span>
               <span className="mx-2">:</span>
-              <span className="flex-1">{data.education.workLocation}</span>
+              <span>{data.education.workLocation}</span>
             </div>
           )}
         </div>
@@ -199,29 +208,29 @@ export default function Template1({ data }: TemplateProps) {
           संपर्क माहिती
         </h3>
         <div className="text-sm space-y-1.5">
-          <div className="flex">
-            <span className="font-semibold w-32 text-right">मोबाईल</span>
+          <div>
+            <span className="font-semibold">मोबाईल</span>
             <span className="mx-2">:</span>
-            <span className="flex-1">{data.contact?.phone || 'N/A'}</span>
+            <span>{data.contact?.phone || 'N/A'}</span>
           </div>
           {data.contact?.alternatePhone && (
-            <div className="flex">
-              <span className="font-semibold w-32 text-right">पर्यायी मोबाईल</span>
+            <div>
+              <span className="font-semibold">पर्यायी मोबाईल</span>
               <span className="mx-2">:</span>
-              <span className="flex-1">{data.contact.alternatePhone}</span>
+              <span>{data.contact.alternatePhone}</span>
             </div>
           )}
           {data.contact?.email && (
-            <div className="flex">
-              <span className="font-semibold w-32 text-right">ईमेल</span>
+            <div>
+              <span className="font-semibold">ईमेल</span>
               <span className="mx-2">:</span>
-              <span className="flex-1">{data.contact.email}</span>
+              <span>{data.contact.email}</span>
             </div>
           )}
-          <div className="flex">
-            <span className="font-semibold w-32 text-right">पत्ता</span>
+          <div>
+            <span className="font-semibold">पत्ता</span>
             <span className="mx-2">:</span>
-            <span className="flex-1">{data.contact?.address || 'N/A'}</span>
+            <span>{data.contact?.address || 'N/A'}</span>
           </div>
         </div>
       </div>
@@ -237,35 +246,35 @@ export default function Template1({ data }: TemplateProps) {
               <div className="flex">
                 <span className="font-semibold w-32 text-right">वय</span>
                 <span className="mx-2">:</span>
-                <span className="flex-1">{data.partnerPreferences.ageRange}</span>
+                <span>{data.partnerPreferences.ageRange}</span>
               </div>
             )}
             {data.partnerPreferences.heightRange && (
               <div className="flex">
                 <span className="font-semibold w-32 text-right">उंची</span>
                 <span className="mx-2">:</span>
-                <span className="flex-1">{data.partnerPreferences.heightRange}</span>
+                <span>{data.partnerPreferences.heightRange}</span>
               </div>
             )}
             {data.partnerPreferences.education && (
               <div className="flex">
                 <span className="font-semibold w-32 text-right">शिक्षण</span>
                 <span className="mx-2">:</span>
-                <span className="flex-1">{data.partnerPreferences.education}</span>
+                <span>{data.partnerPreferences.education}</span>
               </div>
             )}
             {data.partnerPreferences.occupation && (
               <div className="flex">
                 <span className="font-semibold w-32 text-right">व्यवसाय</span>
                 <span className="mx-2">:</span>
-                <span className="flex-1">{data.partnerPreferences.occupation}</span>
+                <span>{data.partnerPreferences.occupation}</span>
               </div>
             )}
             {data.partnerPreferences.other && (
               <div className="flex">
                 <span className="font-semibold w-32 text-right">इतर</span>
                 <span className="mx-2">:</span>
-                <span className="flex-1">{data.partnerPreferences.other}</span>
+                <span>{data.partnerPreferences.other}</span>
               </div>
             )}
           </div>
