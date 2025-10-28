@@ -1,6 +1,7 @@
 'use client';
 
 import { useBiodataStore } from '@/lib/store';
+import HeaderStep from './steps/HeaderStep';
 import PersonalDetailsStep from './steps/PersonalDetailsStep';
 import FamilyDetailsStep from './steps/FamilyDetailsStep';
 import EducationStep from './steps/EducationStep';
@@ -8,11 +9,12 @@ import ContactStep from './steps/ContactStep';
 import PartnerPreferencesStep from './steps/PartnerPreferencesStep';
 
 const steps = [
-  { id: 0, title: 'Personal Details', component: PersonalDetailsStep },
-  { id: 1, title: 'Family Details', component: FamilyDetailsStep },
-  { id: 2, title: 'Education & Career', component: EducationStep },
-  { id: 3, title: 'Contact Info', component: ContactStep },
-  { id: 4, title: 'Partner Preferences', component: PartnerPreferencesStep },
+  { id: 0, title: 'Header / Invocation', component: HeaderStep },
+  { id: 1, title: 'Personal Details', component: PersonalDetailsStep },
+  { id: 2, title: 'Family Details', component: FamilyDetailsStep },
+  { id: 3, title: 'Education & Career', component: EducationStep },
+  { id: 4, title: 'Contact Info', component: ContactStep },
+  { id: 5, title: 'Partner Preferences', component: PartnerPreferencesStep },
 ];
 
 export default function MultiStepForm() {

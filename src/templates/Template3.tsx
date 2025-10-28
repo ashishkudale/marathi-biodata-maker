@@ -6,15 +6,24 @@ interface TemplateProps {
 
 export default function Template3({ data }: TemplateProps) {
   return (
-    <div className="w-full max-w-2xl mx-auto bg-white p-8 border-4 border-red-700">
+    <div className="w-full max-w-2xl mx-auto bg-white p-8 border-4 border-red-700 text-center">
       {/* Decorative Header */}
       <div className="text-center mb-6 relative">
         <div className="absolute top-0 left-0 w-16 h-16 border-t-4 border-l-4 border-orange-500"></div>
         <div className="absolute top-0 right-0 w-16 h-16 border-t-4 border-r-4 border-orange-500"></div>
 
-        <h1 className="text-3xl font-bold text-red-700 mb-2 font-marathi-formal">
-          || श्री गणेशाय नमः ||
-        </h1>
+        {data.header?.text && (
+          <h1 className="text-3xl font-bold text-red-700 mb-2 font-marathi-formal">
+            {data.header.showSymbols && '|| '}
+            {data.header.text}
+            {data.header.showSymbols && ' ||'}
+          </h1>
+        )}
+        {!data.header?.text && (
+          <h1 className="text-3xl font-bold text-red-700 mb-2 font-marathi-formal">
+            || श्री गणेशाय नमः ||
+          </h1>
+        )}
         <h2 className="text-2xl font-semibold text-gray-800 font-marathi">
           विवाह सूचक माहिती पत्रक
         </h2>

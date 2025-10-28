@@ -6,7 +6,7 @@ interface TemplateProps {
 
 export default function Template2({ data }: TemplateProps) {
   return (
-    <div className="w-full max-w-2xl mx-auto bg-gradient-to-br from-slate-50 to-gray-100 p-8">
+    <div className="w-full max-w-2xl mx-auto bg-gradient-to-br from-slate-50 to-gray-100 p-8 text-center">
       {/* Header */}
       <div className="text-center mb-8">
         <h1 className="text-4xl font-bold text-slate-800 mb-2">

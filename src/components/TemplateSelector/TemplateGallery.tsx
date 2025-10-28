@@ -4,6 +4,7 @@ import { useBiodataStore } from '@/lib/store';
 import Template1 from '@/templates/Template1';
 import Template2 from '@/templates/Template2';
 import Template3 from '@/templates/Template3';
+import Template4 from '@/templates/Template4';
 
 const templates = [
   {
@@ -28,6 +29,14 @@ const templates = [
     description: 'Traditional style with photo section',
     icon: '📷',
     component: Template3,
+    isPremium: false,
+  },
+  {
+    id: 'template-4',
+    name: 'Plain Text',
+    description: 'Simple text-based format, printer-friendly',
+    icon: '📄',
+    component: Template4,
     isPremium: false,
   },
 ];

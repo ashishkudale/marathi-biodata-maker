@@ -1,5 +1,13 @@
 export interface BiodataData {
   id?: string;
+  userId?: string;  // User ID for linking biodata to authenticated users
+
+  // Header Customization
+  header?: {
+    text: string;  // The deity/header text
+    showSymbols: boolean;  // Whether to show || symbols
+  };
+
   // Personal Details
   personalDetails: {
     fullName: string;
@@ -78,4 +86,14 @@ export interface Template {
   isPremium: boolean;
   category: 'traditional' | 'modern' | 'minimal';
   hasPhoto: boolean;
+}
+
+export interface User {
+  uid: string;
+  email: string | null;
+  displayName: string | null;
+  photoURL: string | null;
+  emailVerified: boolean;
+  createdAt?: Date;
+  lastLoginAt?: Date;
 }
