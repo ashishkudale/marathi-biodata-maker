@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import MultiStepForm from '@/components/BiodataForm/MultiStepForm';
@@ -14,7 +14,7 @@ import { getBiodata, saveBiodata, getUserBiodatas } from '@/lib/biodataService';
 import { FiSave } from 'react-icons/fi';
 import toast from 'react-hot-toast';
 
-export default function CreateBiodata() {
+function CreateBiodataContent() {
   const { user, loading: authLoading } = useAuth();
   const { biodataData, updateBiodata } = useBiodataStore();
   const searchParams = useSearchParams();
@@ -179,5 +179,20 @@ export default function CreateBiodata() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function CreateBiodata() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <div className="w-16 h-16 border-4 border-orange-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+          <p className="text-gray-600">Loading...</p>
+        </div>
+      </div>
+    }>
+      <CreateBiodataContent />
+    </Suspense>
   );
 }

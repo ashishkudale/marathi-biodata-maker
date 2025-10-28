@@ -169,8 +169,8 @@ export async function deleteBiodata(id: string): Promise<{ success: boolean; err
       const data = docSnap.data() as BiodataData;
 
       // Delete photo from storage if exists
-      if (data.photo) {
-        await deletePhoto(data.photo);
+      if (data.photoUrl) {
+        await deletePhoto(data.photoUrl);
       }
     }
 
