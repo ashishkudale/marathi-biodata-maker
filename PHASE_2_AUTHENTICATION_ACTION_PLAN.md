@@ -72,13 +72,15 @@ import { getFirestore } from "firebase/firestore";
 import { getAuth, GoogleAuthProvider } from "firebase/auth";
 import { getStorage } from "firebase/storage";
 
+// Firebase configuration from environment variables
 const firebaseConfig = {
-  apiKey: "AIzaSyB4kWL5F5dig5g2EmicxXlJmC-4oFQKn4I",
-  authDomain: "resume-maker-55067.firebaseapp.com",
-  projectId: "resume-maker-55067",
-  storageBucket: "resume-maker-55067.firebasestorage.app",
-  messagingSenderId: "794306082085",
-  appId: "1:794306082085:web:7b2fbc3af4549186d056cc"
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
+  measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID
 };
 
 // Initialize Firebase
@@ -93,6 +95,8 @@ googleProvider.setCustomParameters({
   prompt: 'select_account'
 });
 ```
+
+**Note:** Firebase credentials are now stored in environment variables. See `.env.example` for required variables.
 
 ---
 

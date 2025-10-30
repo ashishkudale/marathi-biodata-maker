@@ -31,14 +31,15 @@ import { getFirestore } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 import { getStorage } from "firebase/storage";
 
-// Your web app's Firebase configuration
+// Your web app's Firebase configuration from environment variables
 const firebaseConfig = {
-  apiKey: "AIzaSyB4kWL5F5dig5g2EmicxXlJmC-4oFQKn4I",
-  authDomain: "resume-maker-55067.firebaseapp.com",
-  projectId: "resume-maker-55067",
-  storageBucket: "resume-maker-55067.firebasestorage.app",
-  messagingSenderId: "794306082085",
-  appId: "1:794306082085:web:7b2fbc3af4549186d056cc"
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
+  measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID
 };
 
 // Initialize Firebase
@@ -47,6 +48,8 @@ export const db = getFirestore(app);
 export const auth = getAuth(app);
 export const storage = getStorage(app);
 ```
+
+**Important:** Create a `.env.local` file in your project root with your Firebase credentials. See `.env.example` for required variables. Never commit `.env.local` to version control.
 
 ### Task 1.3: Setup Marathi Fonts
 Create `src/app/globals.css` and add:
