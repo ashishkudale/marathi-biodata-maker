@@ -10,6 +10,7 @@ export default function ContactStep() {
       contact: {
         phone: biodataData.contact?.phone || '',
         address: biodataData.contact?.address || '',
+        mobileNumber: biodataData.contact?.mobileNumber || '',
         ...biodataData.contact,
         [field]: value,
       },

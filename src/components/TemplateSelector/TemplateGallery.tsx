@@ -62,6 +62,7 @@ const sampleData = {
   },
   contact: {
     phone: '+91 98765 43210',
+    mobileNumber: '+91 98765 43210',
     address: 'Mumbai, Maharashtra',
   },
   templateId: 'template-1',

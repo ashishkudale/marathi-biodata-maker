@@ -11,7 +11,7 @@ export interface BiodataData {
     showImage: boolean;
   };
 
-  // Personal Information
+  // Personal Information (New Structure)
   personalInfo: {
     name: string; // Required
     dateOfBirth: string; // Required
@@ -56,6 +56,10 @@ export interface BiodataData {
   contact: {
     address: string; // Required
     mobileNumber: string; // Required
+    // TEMPORARY: Backward compatibility
+    phone?: string;
+    alternatePhone?: string;
+    email?: string;
   };
 
   // Photo (Optional)
@@ -67,6 +71,55 @@ export interface BiodataData {
   // Metadata
   createdAt?: Date;
   updatedAt?: Date;
+
+  // TEMPORARY: Backward compatibility with old structure
+  // TODO: Remove after full migration
+  header?: {
+    text: string;
+    showSymbols: boolean;
+  };
+  personalDetails?: {
+    fullName?: string;
+    fullNameMarathi?: string;
+    age?: number;
+    dateOfBirth?: string;
+    birthTime?: string;
+    birthPlace?: string;
+    height?: string;
+    bloodGroup?: string;
+    complexion?: string;
+    manglik?: 'Yes' | 'No' | 'Anshik';
+    gotra?: string;
+    devak?: string;
+  };
+  familyDetails?: {
+    fatherName?: string;
+    fatherOccupation?: string;
+    motherName?: string;
+    motherOccupation?: string;
+    brothers?: number;
+    brothersMarried?: number;
+    sisters?: number;
+    sistersMarried?: number;
+    familyType?: 'Joint' | 'Nuclear';
+    nativePlace?: string;
+  };
+  education?: {
+    qualification?: string;
+    occupation?: string;
+    company?: string;
+    income?: string;
+    workLocation?: string;
+  };
+  partnerPreferences?: {
+    ageRange?: string;
+    heightRange?: string;
+    education?: string;
+    occupation?: string;
+    other?: string;
+  };
+  aboutMe?: string;
+  language?: 'marathi' | 'english' | 'both';
 }
 
 // Deity options
