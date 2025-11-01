@@ -19,19 +19,19 @@ export default function PersonalInfoStep() {
 
   const { register, handleSubmit, formState: { errors } } = useForm({
     defaultValues: {
-      dateOfBirth: biodataData?.personalInfo?.dateOfBirth || '',
-      birthTime: biodataData?.personalInfo?.birthTime || '',
-      religion: biodataData?.personalInfo?.religion || '',
-      caste: biodataData?.personalInfo?.caste || '',
-      height: biodataData?.personalInfo?.height || '',
-      gan: biodataData?.personalInfo?.gan || '',
-      nadi: biodataData?.personalInfo?.nadi || '',
-      manglik: biodataData?.personalInfo?.manglik || '',
-      colour: biodataData?.personalInfo?.colour || '',
-      bloodGroup: biodataData?.personalInfo?.bloodGroup || '',
-      education: biodataData?.personalInfo?.education || '',
-      jobOrBusiness: biodataData?.personalInfo?.jobOrBusiness || '',
-      salary: biodataData?.personalInfo?.salary || '',
+      dateOfBirth: biodataData?.personalInfo?.dateOfBirth ?? '',
+      birthTime: biodataData?.personalInfo?.birthTime ?? '',
+      religion: biodataData?.personalInfo?.religion ?? '',
+      caste: biodataData?.personalInfo?.caste ?? '',
+      height: biodataData?.personalInfo?.height ?? '',
+      gan: biodataData?.personalInfo?.gan ?? '',
+      nadi: biodataData?.personalInfo?.nadi ?? '',
+      manglik: biodataData?.personalInfo?.manglik ?? '',
+      colour: biodataData?.personalInfo?.colour ?? '',
+      bloodGroup: biodataData?.personalInfo?.bloodGroup ?? '',
+      education: biodataData?.personalInfo?.education ?? '',
+      jobOrBusiness: biodataData?.personalInfo?.jobOrBusiness ?? '',
+      salary: biodataData?.personalInfo?.salary ?? '',
     }
   });
 
