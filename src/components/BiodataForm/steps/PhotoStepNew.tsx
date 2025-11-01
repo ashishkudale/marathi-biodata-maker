@@ -34,11 +34,13 @@ export default function PhotoStepNew() {
 
   const handleSkip = () => {
     updateBiodata({ photoUrl: '' });
-    setStep(currentStep + 1);
+    // Don't increment - this is the last step
+    // User can now download PDF or save biodata
   };
 
   const handleSubmit = () => {
-    setStep(currentStep + 1);
+    // Don't increment - this is the last step
+    // User can now download PDF or save biodata
   };
 
   const handleBack = () => {
@@ -115,9 +117,9 @@ export default function PhotoStepNew() {
         )}
       </div>
 
-      <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-        <p className="text-sm text-blue-800">
-          <strong>Note:</strong> Photo upload is optional. You can skip this step.
+      <div className="bg-green-50 border border-green-200 rounded-lg p-4">
+        <p className="text-sm text-green-800">
+          <strong>✓ You're Done!</strong> Your biodata is complete. You can now download PDF or save to cloud.
         </p>
       </div>
 
@@ -128,20 +130,6 @@ export default function PhotoStepNew() {
           className="flex-1 bg-gray-200 text-gray-700 py-3 rounded-lg font-semibold hover:bg-gray-300 transition"
         >
           ← Back / मागे
-        </button>
-        <button
-          type="button"
-          onClick={handleSkip}
-          className="flex-1 bg-gray-400 text-white py-3 rounded-lg font-semibold hover:bg-gray-500 transition"
-        >
-          Skip / वगळा
-        </button>
-        <button
-          type="button"
-          onClick={handleSubmit}
-          className="flex-1 bg-orange-500 text-white py-3 rounded-lg font-semibold hover:bg-orange-600 transition"
-        >
-          {preview ? 'Complete → / पूर्ण' : 'Skip & Complete'}
         </button>
       </div>
     </div>
