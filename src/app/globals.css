@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Baloo+Bhai+2:wght@400;500;600;700&family=Mukta:wght@300;400;500;600;700&family=Tiro+Devanagari+Marathi&display=swap');
+@import 'react-transliterate/dist/index.css';
 
 @tailwind base;
 @tailwind components;
@@ -16,6 +17,46 @@
   .font-marathi-formal {
     font-family: 'Tiro Devanagari Marathi', serif;
   }
+}
+
+/* React Transliterate Custom Styles */
+.rtl-container {
+  position: relative;
+  width: 100%;
+}
+
+.rtl-suggestions {
+  position: absolute;
+  z-index: 1000;
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  max-height: 240px;
+  overflow-y: auto;
+  margin-top: 4px;
+  width: 100%;
+}
+
+.rtl-suggestion {
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  font-size: 1rem;
+}
+
+.rtl-suggestion:hover {
+  background-color: #fff7ed;
+}
+
+.rtl-suggestion-active {
+  background-color: #fed7aa;
+  color: #9a3412;
+}
+
+/* Ensure Marathi text displays correctly */
+.rtl-input {
+  font-family: 'Mukta', 'Noto Sans Devanagari', sans-serif;
 }
 
 /* Print Styles for PDF Export */
