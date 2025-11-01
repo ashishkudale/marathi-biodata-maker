@@ -3,7 +3,8 @@
 import { useBiodataStore } from '@/lib/store';
 import { FiDownload, FiPrinter } from 'react-icons/fi';
 import { useState } from 'react';
-import { generatePDF, downloadPDF, generateFileName } from '@/utils/pdfGenerator';
+import { generatePDF } from '@/utils/pdfGeneratorNew';
+import toast from 'react-hot-toast';
 
 export default function ActionButtons() {
   const { biodataData } = useBiodataStore();
@@ -12,13 +13,21 @@ export default function ActionButtons() {
   const handleDownloadPDF = async () => {
     setIsDownloading(true);
     try {
-      // Generate PDF from preview
-      const pdfBlob = await generatePDF(biodataData);
-      const fileName = generateFileName(biodataData);
-      downloadPDF(pdfBlob, fileName);
+      // Generate filename
+      const name = biodataData.personalInfo?.name || biodataData.personalDetails?.fullName || 'biodata';
+      const fileName = `${name.replace(/\s+/g, '_')}_biodata.pdf`;
+
+      // Generate and download PDF using new generator
+      const result = await generatePDF(biodataData, fileName);
+
+      if (result.success) {
+        toast.success('PDF downloaded successfully!');
+      } else {
+        toast.error('Failed to generate PDF. Please try again.');
+      }
     } catch (error) {
       console.error('Download failed:', error);
-      alert('Failed to download PDF. Please try again.');
+      toast.error('Failed to download PDF. Please try again.');
     } finally {
       setIsDownloading(false);
     }
