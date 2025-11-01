@@ -2,10 +2,13 @@
 
 import React, { useState } from 'react';
 import { useBiodataStore } from '@/lib/store';
+import ImageCropper from '@/components/ImageCropper/ImageCropper';
 
 export default function PhotoStepNew() {
   const { biodataData, updateBiodata, setStep, currentStep } = useBiodataStore();
   const [preview, setPreview] = useState<string | null>(biodataData?.photoUrl || null);
+  const [showCropper, setShowCropper] = useState(false);
+  const [originalImage, setOriginalImage] = useState<string | null>(null);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -22,14 +25,26 @@ export default function PhotoStepNew() {
         return;
       }
 
-      // Create preview
+      // Load image and show cropper
       const reader = new FileReader();
       reader.onloadend = () => {
-        setPreview(reader.result as string);
-        updateBiodata({ photoUrl: reader.result as string });
+        setOriginalImage(reader.result as string);
+        setShowCropper(true);
       };
       reader.readAsDataURL(file);
     }
+  };
+
+  const handleCropComplete = (croppedImage: string) => {
+    setPreview(croppedImage);
+    updateBiodata({ photoUrl: croppedImage });
+    setShowCropper(false);
+    setOriginalImage(null);
+  };
+
+  const handleCropCancel = () => {
+    setShowCropper(false);
+    setOriginalImage(null);
   };
 
   const handleSkip = () => {
@@ -49,6 +64,16 @@ export default function PhotoStepNew() {
 
   return (
     <div className="space-y-6">
+      {/* Image Cropper Modal */}
+      {showCropper && originalImage && (
+        <ImageCropper
+          image={originalImage}
+          onCropComplete={handleCropComplete}
+          onCancel={handleCropCancel}
+          aspectRatio={3 / 4}
+        />
+      )}
+
       <div>
         <h2 className="text-2xl font-bold text-gray-800 mb-2">
           फोटो / Photo (Optional)
