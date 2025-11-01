@@ -4,6 +4,7 @@ import { useEffect, useState, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import MultiStepForm from '@/components/BiodataForm/MultiStepForm';
+import MultiStepFormNew from '@/components/BiodataForm/MultiStepFormNew';
 import PreviewPanel from '@/components/TemplatePreview/PreviewPanel';
 import TemplateGallery from '@/components/TemplateSelector/TemplateGallery';
 import ActionButtons from '@/components/DownloadShare/ActionButtons';
@@ -140,8 +141,8 @@ function CreateBiodataContent() {
             {/* Template Selector */}
             <TemplateGallery />
 
-            {/* Multi-Step Form */}
-            <MultiStepForm />
+            {/* Multi-Step Form - NEW 5-STEP FLOW */}
+            <MultiStepFormNew />
 
             {/* Save to Cloud Button */}
             {user && (
