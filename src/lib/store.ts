@@ -11,63 +11,55 @@ interface BiodataStore {
   loadDraft: () => void;
 }
 
-export const useBiodataStore = create<BiodataStore>((set) => ({
-  biodataData: {
-    header: {
-      text: 'श्री गणेशाय नमः',
-      showSymbols: true,
-    },
-    personalDetails: {
-      fullName: '',
-      fullNameMarathi: '',
-      dateOfBirth: '',
-      birthTime: '',
-      birthPlace: '',
-      age: 0,
-      height: '',
-      bloodGroup: '',
-      complexion: '',
-      manglik: undefined,
-      gotra: '',
-      devak: '',
-    },
-    familyDetails: {
-      fatherName: '',
-      fatherOccupation: '',
-      motherName: '',
-      motherOccupation: '',
-      brothers: 0,
-      brothersMarried: 0,
-      sisters: 0,
-      sistersMarried: 0,
-      familyType: undefined,
-      nativePlace: '',
-    },
-    education: {
-      qualification: '',
-      occupation: '',
-      company: '',
-      income: '',
-      workLocation: '',
-    },
-    contact: {
-      phone: '',
-      alternatePhone: '',
-      email: '',
-      address: '',
-    },
-    partnerPreferences: {
-      ageRange: '',
-      heightRange: '',
-      education: '',
-      occupation: '',
-      other: '',
-    },
-    aboutMe: '',
-    templateId: 'template-1',
-    language: 'both',
+const initialState: Partial<BiodataData> = {
+  templateId: 'template-1',
+  deity: {
+    name: '|| श्री गणेशाय नमः ||',
+    showImage: false,
+    imageUrl: '',
   },
+  personalInfo: {
+    name: '',
+    dateOfBirth: '',
+    birthTime: '',
+    birthPlace: '',
+    religion: '',
+    caste: '',
+    kuldaivat: '',
+    gotra: '',
+    rashi: '',
+    nakshatra: '',
+    gan: '',
+    nadi: '',
+    manglik: undefined,
+    height: '',
+    colour: '',
+    bloodGroup: '',
+    education: '',
+    jobOrBusiness: '',
+    salary: '',
+  },
+  familyInfo: {
+    fatherName: '',
+    fatherJobOrBusiness: '',
+    motherName: '',
+    motherJobOrBusiness: '',
+    sisters: [],
+    brothers: [],
+    mama: '',
+    relativeSurnames: '',
+  },
+  contact: {
+    address: '',
+    mobileNumber: '',
+  },
+  photoUrl: '',
+};
+
+export const useBiodataStore = create<BiodataStore>((set) => ({
+  biodataData: initialState,
   currentStep: 0,
+
   updateBiodata: (data) =>
     set((state) => {
       const updatedData = { ...state.biodataData, ...data };
@@ -75,7 +67,9 @@ export const useBiodataStore = create<BiodataStore>((set) => ({
       saveToLocalStorage(updatedData);
       return { biodataData: updatedData };
     }),
+
   setStep: (step) => set({ currentStep: step }),
+
   loadDraft: () =>
     set(() => {
       const draft = loadFromLocalStorage();
@@ -84,63 +78,10 @@ export const useBiodataStore = create<BiodataStore>((set) => ({
       }
       return {};
     }),
+
   resetBiodata: () =>
     set({
-      biodataData: {
-        header: {
-          text: 'श्री गणेशाय नमः',
-          showSymbols: true,
-        },
-        personalDetails: {
-          fullName: '',
-          fullNameMarathi: '',
-          dateOfBirth: '',
-          birthTime: '',
-          birthPlace: '',
-          age: 0,
-          height: '',
-          bloodGroup: '',
-          complexion: '',
-          manglik: undefined,
-          gotra: '',
-          devak: '',
-        },
-        familyDetails: {
-          fatherName: '',
-          fatherOccupation: '',
-          motherName: '',
-          motherOccupation: '',
-          brothers: 0,
-          brothersMarried: 0,
-          sisters: 0,
-          sistersMarried: 0,
-          familyType: undefined,
-          nativePlace: '',
-        },
-        education: {
-          qualification: '',
-          occupation: '',
-          company: '',
-          income: '',
-          workLocation: '',
-        },
-        contact: {
-          phone: '',
-          alternatePhone: '',
-          email: '',
-          address: '',
-        },
-        partnerPreferences: {
-          ageRange: '',
-          heightRange: '',
-          education: '',
-          occupation: '',
-          other: '',
-        },
-        aboutMe: '',
-        templateId: 'template-1',
-        language: 'both',
-      },
+      biodataData: initialState,
       currentStep: 0,
     }),
 }));

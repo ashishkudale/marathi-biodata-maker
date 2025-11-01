@@ -1,6 +1,6 @@
-// Updated types for Marathi Biodata Maker - New Simplified Structure
+// Updated types for simplified Marathi Biodata Maker (New Structure)
 
-export interface BiodataData {
+export interface BiodataDataNew {
   id?: string;
   userId?: string;
 
@@ -31,7 +31,7 @@ export interface BiodataData {
     bloodGroup?: string;
     education: string; // Required
     jobOrBusiness: string; // Required
-    salary: string; // Required;
+    salary: string; // Required
   };
 
   // Family Information
@@ -118,23 +118,3 @@ export const REQUIRED_FIELDS = [
   'contact.address',
   'contact.mobileNumber',
 ];
-
-// Keep old interfaces for backward compatibility
-export interface Template {
-  id: string;
-  name: string;
-  thumbnail: string;
-  isPremium: boolean;
-  category: 'traditional' | 'modern' | 'minimal';
-  hasPhoto: boolean;
-}
-
-export interface User {
-  uid: string;
-  email: string | null;
-  displayName: string | null;
-  photoURL: string | null;
-  emailVerified: boolean;
-  createdAt?: Date;
-  lastLoginAt?: Date;
-}
