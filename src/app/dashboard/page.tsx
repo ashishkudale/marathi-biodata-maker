@@ -165,22 +165,23 @@ export default function DashboardPage() {
                 {/* Biodata Info */}
                 <div className="mb-4">
                   <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                    {biodata.personalDetails?.fullName ||
+                    {biodata.personalInfo?.name ||
+                     biodata.personalDetails?.fullName ||
                      biodata.personalDetails?.fullNameMarathi ||
                      'Untitled Biodata'}
                   </h3>
                   <div className="text-sm text-gray-600 space-y-1">
                     <p>
                       <span className="font-medium">Age:</span>{' '}
-                      {biodata.personalDetails?.age || 'N/A'}
+                      {biodata.personalInfo?.dateOfBirth || biodata.personalDetails?.age || 'N/A'}
                     </p>
                     <p>
                       <span className="font-medium">Education:</span>{' '}
-                      {biodata.education?.qualification || 'N/A'}
+                      {biodata.personalInfo?.education || biodata.education?.qualification || 'N/A'}
                     </p>
                     <p>
                       <span className="font-medium">Occupation:</span>{' '}
-                      {biodata.education?.occupation || 'N/A'}
+                      {biodata.personalInfo?.jobOrBusiness || biodata.education?.occupation || 'N/A'}
                     </p>
                     <p className="text-xs text-gray-500 mt-2">
                       Last updated: {formatDate(biodata.updatedAt)}
