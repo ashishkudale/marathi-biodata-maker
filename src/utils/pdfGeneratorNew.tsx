@@ -1,13 +1,26 @@
-import { Document, Page, Text, View, StyleSheet, pdf } from '@react-pdf/renderer';
+import { Document, Page, Text, View, StyleSheet, Font, pdf } from '@react-pdf/renderer';
 import { BiodataData } from '@/lib/types';
 
-// Note: Using react-pdf's default font which has Devanagari support
-// Custom font registration was causing "Unknown font format" errors
+// Register Noto Sans Devanagari font from local files
+Font.register({
+  family: 'Noto Sans Devanagari',
+  fonts: [
+    {
+      src: '/fonts/NotoSansDevanagari-Regular.ttf',
+      fontWeight: 'normal',
+    },
+    {
+      src: '/fonts/NotoSansDevanagari-Bold.ttf',
+      fontWeight: 'bold',
+    },
+  ],
+});
 
 // Define styles
 const styles = StyleSheet.create({
   page: {
     padding: 40,
+    fontFamily: 'Noto Sans Devanagari',
     fontSize: 11,
     lineHeight: 1.5,
   },
