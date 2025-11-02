@@ -48,9 +48,6 @@ export default function Template1({ data }: TemplateProps) {
             || श्री गणेशाय नमः ||
           </h1>
         )}
-        <h2 className="text-2xl font-semibold text-gray-800">
-          विवाह सूचक माहिती पत्रक
-        </h2>
         <div className="w-24 h-1 bg-orange-500 mx-auto mt-3"></div>
       </div>
 

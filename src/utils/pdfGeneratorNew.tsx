@@ -138,7 +138,6 @@ const BiodataPDF = ({ data }: BiodataPDFProps) => (
         {!data.deity?.name && !data.header?.text && (
           <Text style={styles.deityText}>|| श्री गणेशाय नमः ||</Text>
         )}
-        <Text style={styles.title}>विवाह सूचक माहिती पत्रक</Text>
       </View>
 
       {/* Personal Details */}
