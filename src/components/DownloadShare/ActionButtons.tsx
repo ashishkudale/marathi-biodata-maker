@@ -27,7 +27,8 @@ export default function ActionButtons() {
       }
     } catch (error) {
       console.error('Download failed:', error);
-      toast.error('Failed to download PDF. Please try again.');
+      const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+      toast.error(`Failed to download PDF: ${errorMessage}`);
     } finally {
       setIsDownloading(false);
     }

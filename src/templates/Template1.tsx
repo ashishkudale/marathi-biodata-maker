@@ -4,27 +4,55 @@ interface TemplateProps {
   data: Partial<BiodataData>;
 }
 
+// Helper function to convert 24-hour time to 12-hour format with AM/PM
+function formatTime(time: string | undefined): string | undefined {
+  if (!time) return undefined;
+
+  // Check if time is already in 12-hour format (contains AM/PM)
+  if (time.toLowerCase().includes('am') || time.toLowerCase().includes('pm')) {
+    return time;
+  }
+
+  // Parse 24-hour format (e.g., "00:34" or "14:30")
+  const [hours, minutes] = time.split(':').map(num => parseInt(num, 10));
+
+  if (isNaN(hours) || isNaN(minutes)) {
+    return time; // Return original if can't parse
+  }
+
+  const period = hours >= 12 ? 'PM' : 'AM';
+  const hours12 = hours % 12 || 12; // Convert 0 to 12 for midnight
+  const minutesStr = minutes.toString().padStart(2, '0');
+
+  return `${hours12}:${minutesStr} ${period}`;
+}
+
+// Aligned Row component for perfect colon alignment
+function AlignedRow({ label, value }: { label: string; value?: string }) {
+  if (!value) return null;
+  return (
+    <div className="flex text-[11px] leading-[1.5]">
+      <span className="font-bold w-[170px] shrink-0 text-gray-700">{label}</span>
+      <span className="font-bold w-[15px] shrink-0 text-gray-700">:</span>
+      <span className="flex-1 text-gray-900">{value}</span>
+    </div>
+  );
+}
+
 export default function Template1({ data }: TemplateProps) {
   return (
-    <div className="w-full max-w-2xl mx-auto bg-white p-8 font-marathi text-center">
+    <div className="w-full max-w-2xl mx-auto bg-white p-8 font-marathi">
       {/* Header with Deity */}
-      <div className="text-center border-b-4 border-orange-500 pb-4 mb-6">
+      <div className="text-center border-b-[3px] border-orange-500 pb-[15px] mb-5">
         {/* New structure: deity */}
-        {data.deity?.showImage && data.deity?.imageUrl && (
-          <img
-            src={data.deity.imageUrl}
-            alt="Deity"
-            className="w-20 h-20 mx-auto mb-2 object-contain"
-          />
-        )}
         {data.deity?.name && (
-          <h1 className="text-3xl font-bold text-orange-600 mb-2">
+          <h1 className="text-lg font-bold text-orange-500 mb-[5px]">
             {data.deity.name}
           </h1>
         )}
         {/* Fallback to old structure */}
         {!data.deity?.name && data.header?.text && (
-          <h1 className="text-3xl font-bold text-orange-600 mb-2">
+          <h1 className="text-lg font-bold text-orange-500 mb-[5px]">
             {data.header.showSymbols && '|| '}
             {data.header.text}
             {data.header.showSymbols && ' ||'}
@@ -32,302 +60,155 @@ export default function Template1({ data }: TemplateProps) {
         )}
         {/* Default */}
         {!data.deity?.name && !data.header?.text && (
-          <h1 className="text-3xl font-bold text-orange-600 mb-2">
+          <h1 className="text-lg font-bold text-orange-500 mb-[5px]">
             || श्री गणेशाय नमः ||
           </h1>
         )}
-        <h2 className="text-2xl font-semibold text-gray-800">
-          विवाह सूचक माहिती पत्रक
-        </h2>
-        <div className="w-24 h-1 bg-orange-500 mx-auto mt-3"></div>
       </div>
-
-      {/* Photo */}
-      {data.photoUrl && (
-        <div className="flex justify-center mb-6">
-          <img
-            src={data.photoUrl}
-            alt="Profile"
-            className="w-40 h-48 object-cover border-4 border-orange-500 rounded"
-          />
-        </div>
-      )}
 
       {/* Personal Details - NEW STRUCTURE */}
-      <div className="mb-6">
-        <h3 className="text-xl font-bold text-orange-600 mb-3 border-b-2 border-orange-300 pb-2">
+      <div className="mb-[15px]">
+        <h3 className="text-[13px] font-bold text-orange-500 mb-2 pb-1 border-b border-orange-200">
           वैयक्तिक माहिती
         </h3>
-        <div className="text-sm space-y-1.5">
-          <div>
-            <span className="font-semibold">नाव</span>
-            <span className="mx-2">:</span>
-            <span>{data.personalInfo?.name || data.personalDetails?.fullNameMarathi || data.personalDetails?.fullName || 'N/A'}</span>
-          </div>
-          <div>
-            <span className="font-semibold">जन्मतारीख</span>
-            <span className="mx-2">:</span>
-            <span>{data.personalInfo?.dateOfBirth || data.personalDetails?.dateOfBirth || 'N/A'}</span>
-          </div>
-          {(data.personalInfo?.birthTime || data.personalDetails?.birthTime) && (
-            <div>
-              <span className="font-semibold">जन्मवेळ</span>
-              <span className="mx-2">:</span>
-              <span>{data.personalInfo?.birthTime || data.personalDetails?.birthTime}</span>
-            </div>
-          )}
-          {(data.personalInfo?.birthPlace || data.personalDetails?.birthPlace) && (
-            <div>
-              <span className="font-semibold">जन्मस्थळ</span>
-              <span className="mx-2">:</span>
-              <span>{data.personalInfo?.birthPlace || data.personalDetails?.birthPlace}</span>
-            </div>
-          )}
-          {(data.personalInfo?.religion) && (
-            <div>
-              <span className="font-semibold">धर्म</span>
-              <span className="mx-2">:</span>
-              <span>{data.personalInfo.religion}</span>
-            </div>
-          )}
-          {(data.personalInfo?.caste) && (
-            <div>
-              <span className="font-semibold">जात</span>
-              <span className="mx-2">:</span>
-              <span>{data.personalInfo.caste}</span>
-            </div>
-          )}
-          <div>
-            <span className="font-semibold">उंची</span>
-            <span className="mx-2">:</span>
-            <span>{data.personalInfo?.height || data.personalDetails?.height || 'N/A'}</span>
-          </div>
-          {(data.personalInfo?.bloodGroup || data.personalDetails?.bloodGroup) && (
-            <div>
-              <span className="font-semibold">रक्तगट</span>
-              <span className="mx-2">:</span>
-              <span>{data.personalInfo?.bloodGroup || data.personalDetails?.bloodGroup}</span>
-            </div>
-          )}
-          {(data.personalInfo?.colour || data.personalDetails?.complexion) && (
-            <div>
-              <span className="font-semibold">रंग</span>
-              <span className="mx-2">:</span>
-              <span>{data.personalInfo?.colour || data.personalDetails?.complexion}</span>
-            </div>
-          )}
-          {(data.personalInfo?.kuldaivat) && (
-            <div>
-              <span className="font-semibold">कुलदैवत</span>
-              <span className="mx-2">:</span>
-              <span>{data.personalInfo.kuldaivat}</span>
-            </div>
-          )}
-          {(data.personalInfo?.gotra || data.personalDetails?.gotra) && (
-            <div>
-              <span className="font-semibold">गोत्र</span>
-              <span className="mx-2">:</span>
-              <span>{data.personalInfo?.gotra || data.personalDetails?.gotra}</span>
-            </div>
-          )}
-          {(data.personalInfo?.rashi) && (
-            <div>
-              <span className="font-semibold">राशी</span>
-              <span className="mx-2">:</span>
-              <span>{data.personalInfo.rashi}</span>
-            </div>
-          )}
-          {(data.personalInfo?.nakshatra) && (
-            <div>
-              <span className="font-semibold">नक्षत्र</span>
-              <span className="mx-2">:</span>
-              <span>{data.personalInfo.nakshatra}</span>
-            </div>
-          )}
-          {(data.personalInfo?.manglik || data.personalDetails?.manglik) && (
-            <div>
-              <span className="font-semibold">मांगलिक</span>
-              <span className="mx-2">:</span>
-              <span>{data.personalInfo?.manglik || data.personalDetails?.manglik}</span>
-            </div>
-          )}
-          {/* Education & Job from new structure */}
-          {data.personalInfo?.education && (
-            <div>
-              <span className="font-semibold">शिक्षण</span>
-              <span className="mx-2">:</span>
-              <span>{data.personalInfo.education}</span>
-            </div>
-          )}
-          {data.personalInfo?.jobOrBusiness && (
-            <div>
-              <span className="font-semibold">नोकरी/व्यवसाय</span>
-              <span className="mx-2">:</span>
-              <span>{data.personalInfo.jobOrBusiness}</span>
-            </div>
-          )}
-          {data.personalInfo?.salary && (
-            <div>
-              <span className="font-semibold">वार्षिक उत्पन्न</span>
-              <span className="mx-2">:</span>
-              <span>{data.personalInfo.salary}</span>
-            </div>
-          )}
+        <div className="space-y-[5px]">
+          <AlignedRow
+            label="नाव"
+            value={data.personalInfo?.name || data.personalDetails?.fullNameMarathi || data.personalDetails?.fullName || 'N/A'}
+          />
+          <AlignedRow
+            label="जन्मतारीख"
+            value={data.personalInfo?.dateOfBirth || data.personalDetails?.dateOfBirth || 'N/A'}
+          />
+          <AlignedRow
+            label="जन्मवेळ"
+            value={formatTime(data.personalInfo?.birthTime || data.personalDetails?.birthTime)}
+          />
+          <AlignedRow
+            label="जन्मस्थळ"
+            value={data.personalInfo?.birthPlace || data.personalDetails?.birthPlace}
+          />
+          <AlignedRow
+            label="धर्म"
+            value={data.personalInfo?.religion}
+          />
+          <AlignedRow
+            label="जात"
+            value={data.personalInfo?.caste}
+          />
+          <AlignedRow
+            label="उंची"
+            value={data.personalInfo?.height || data.personalDetails?.height || 'N/A'}
+          />
+          <AlignedRow
+            label="रक्तगट"
+            value={data.personalInfo?.bloodGroup || data.personalDetails?.bloodGroup}
+          />
+          <AlignedRow
+            label="रंग"
+            value={data.personalInfo?.colour || data.personalDetails?.complexion}
+          />
+          <AlignedRow
+            label="कुलदैवत"
+            value={data.personalInfo?.kuldaivat}
+          />
+          <AlignedRow
+            label="गोत्र"
+            value={data.personalInfo?.gotra || data.personalDetails?.gotra}
+          />
+          <AlignedRow
+            label="राशी"
+            value={data.personalInfo?.rashi}
+          />
+          <AlignedRow
+            label="नक्षत्र"
+            value={data.personalInfo?.nakshatra}
+          />
+          <AlignedRow
+            label="मांगलिक"
+            value={data.personalInfo?.manglik || data.personalDetails?.manglik}
+          />
+          <AlignedRow
+            label="शिक्षण"
+            value={data.personalInfo?.education}
+          />
+          <AlignedRow
+            label="नोकरी/व्यवसाय"
+            value={data.personalInfo?.jobOrBusiness}
+          />
+          <AlignedRow
+            label="वार्षिक उत्पन्न"
+            value={data.personalInfo?.salary}
+          />
         </div>
       </div>
 
-      {/* Family Details - NEW STRUCTURE */}
-      <div className="mb-6">
-        <h3 className="text-xl font-bold text-orange-600 mb-3 border-b-2 border-orange-300 pb-2">
+      {/* Family Details */}
+      <div className="mb-[15px]">
+        <h3 className="text-[13px] font-bold text-orange-500 mb-2 pb-1 border-b border-orange-200">
           कौटुंबिक माहिती
         </h3>
-        <div className="text-sm space-y-1.5">
-          <div>
-            <span className="font-semibold">वडीलांचे नाव</span>
-            <span className="mx-2">:</span>
-            <span>{data.familyInfo?.fatherName || data.familyDetails?.fatherName || 'N/A'}</span>
-          </div>
-          {(data.familyInfo?.fatherJobOrBusiness || data.familyDetails?.fatherOccupation) && (
-            <div>
-              <span className="font-semibold">वडीलांचा व्यवसाय</span>
-              <span className="mx-2">:</span>
-              <span>{data.familyInfo?.fatherJobOrBusiness || data.familyDetails?.fatherOccupation}</span>
-            </div>
-          )}
-          <div>
-            <span className="font-semibold">आईचे नाव</span>
-            <span className="mx-2">:</span>
-            <span>{data.familyInfo?.motherName || data.familyDetails?.motherName || 'N/A'}</span>
-          </div>
-          {(data.familyInfo?.motherJobOrBusiness || data.familyDetails?.motherOccupation) && (
-            <div>
-              <span className="font-semibold">आईचा व्यवसाय</span>
-              <span className="mx-2">:</span>
-              <span>{data.familyInfo?.motherJobOrBusiness || data.familyDetails?.motherOccupation}</span>
-            </div>
-          )}
-
-          {/* New structure: detailed siblings */}
+        <div className="space-y-[5px]">
+          <AlignedRow
+            label="वडीलांचे नाव"
+            value={data.familyInfo?.fatherName || data.familyDetails?.fatherName || 'N/A'}
+          />
+          <AlignedRow
+            label="वडीलांचा व्यवसाय"
+            value={data.familyInfo?.fatherJobOrBusiness || data.familyDetails?.fatherOccupation}
+          />
+          <AlignedRow
+            label="आईचे नाव"
+            value={data.familyInfo?.motherName || data.familyDetails?.motherName || 'N/A'}
+          />
+          <AlignedRow
+            label="आईचा व्यवसाय"
+            value={data.familyInfo?.motherJobOrBusiness || data.familyDetails?.motherOccupation}
+          />
           {data.familyInfo?.sisters && data.familyInfo.sisters.length > 0 && (
-            <div>
-              <span className="font-semibold">बहिणी</span>
-              <span className="mx-2">:</span>
-              <span>
-                {data.familyInfo.sisters.map((sister, idx) =>
-                  `${sister.name} (${sister.maritalStatus === 'Married' ? 'विवाहित' : 'अविवाहित'})`
-                ).join(', ')}
-              </span>
-            </div>
+            <AlignedRow
+              label="बहिणी"
+              value={data.familyInfo.sisters.map((s) => `${s.name} (${s.maritalStatus === 'Married' ? 'विवाहित' : 'अविवाहित'})`).join(', ')}
+            />
           )}
           {data.familyInfo?.brothers && data.familyInfo.brothers.length > 0 && (
-            <div>
-              <span className="font-semibold">भाऊ</span>
-              <span className="mx-2">:</span>
-              <span>
-                {data.familyInfo.brothers.map((brother, idx) =>
-                  `${brother.name} (${brother.maritalStatus === 'Married' ? 'विवाहित' : 'अविवाहित'})`
-                ).join(', ')}
-              </span>
-            </div>
+            <AlignedRow
+              label="भाऊ"
+              value={data.familyInfo.brothers.map((b) => `${b.name} (${b.maritalStatus === 'Married' ? 'विवाहित' : 'अविवाहित'})`).join(', ')}
+            />
           )}
-
-          {/* Old structure: number of siblings */}
-          {!data.familyInfo?.brothers && data.familyDetails?.brothers !== undefined && (
-            <div>
-              <span className="font-semibold">भाऊ</span>
-              <span className="mx-2">:</span>
-              <span>{data.familyDetails.brothers} (विवाहित: {data.familyDetails.brothersMarried || 0})</span>
-            </div>
-          )}
-          {!data.familyInfo?.sisters && data.familyDetails?.sisters !== undefined && (
-            <div>
-              <span className="font-semibold">बहीण</span>
-              <span className="mx-2">:</span>
-              <span>{data.familyDetails.sisters} (विवाहित: {data.familyDetails.sistersMarried || 0})</span>
-            </div>
-          )}
-
-          {data.familyInfo?.mama && (
-            <div>
-              <span className="font-semibold">मामा</span>
-              <span className="mx-2">:</span>
-              <span>{data.familyInfo.mama}</span>
-            </div>
-          )}
-          {data.familyInfo?.relativeSurnames && (
-            <div>
-              <span className="font-semibold">नातेवाईक आडनावे</span>
-              <span className="mx-2">:</span>
-              <span>{data.familyInfo.relativeSurnames}</span>
-            </div>
-          )}
-          {data.familyDetails?.nativePlace && (
-            <div>
-              <span className="font-semibold">मूळ गाव</span>
-              <span className="mx-2">:</span>
-              <span>{data.familyDetails.nativePlace}</span>
-            </div>
-          )}
+          <AlignedRow
+            label="मामा"
+            value={data.familyInfo?.mama}
+          />
+          <AlignedRow
+            label="नातेवाईक आडनावे"
+            value={data.familyInfo?.relativeSurnames}
+          />
         </div>
       </div>
-
-      {/* Education & Career - OLD STRUCTURE FALLBACK */}
-      {!data.personalInfo?.education && data.education && (
-        <div className="mb-6">
-          <h3 className="text-xl font-bold text-orange-600 mb-3 border-b-2 border-orange-300 pb-2">
-            शिक्षण आणि व्यवसाय
-          </h3>
-          <div className="text-sm space-y-1.5">
-            <div>
-              <span className="font-semibold">शिक्षण</span>
-              <span className="mx-2">:</span>
-              <span>{data.education.qualification || 'N/A'}</span>
-            </div>
-            <div>
-              <span className="font-semibold">व्यवसाय</span>
-              <span className="mx-2">:</span>
-              <span>{data.education.occupation || 'N/A'}</span>
-            </div>
-            {data.education.company && (
-              <div>
-                <span className="font-semibold">कंपनी</span>
-                <span className="mx-2">:</span>
-                <span>{data.education.company}</span>
-              </div>
-            )}
-            {data.education.income && (
-              <div>
-                <span className="font-semibold">उत्पन्न</span>
-                <span className="mx-2">:</span>
-                <span>{data.education.income}</span>
-              </div>
-            )}
-          </div>
-        </div>
-      )}
 
       {/* Contact Details */}
-      <div className="mb-6">
-        <h3 className="text-xl font-bold text-orange-600 mb-3 border-b-2 border-orange-300 pb-2">
+      <div className="mb-[15px]">
+        <h3 className="text-[13px] font-bold text-orange-500 mb-2 pb-1 border-b border-orange-200">
           संपर्क माहिती
         </h3>
-        <div className="text-sm space-y-1.5">
-          <div>
-            <span className="font-semibold">मोबाईल</span>
-            <span className="mx-2">:</span>
-            <span>{data.contact?.mobileNumber || data.contact?.phone || 'N/A'}</span>
-          </div>
-          <div>
-            <span className="font-semibold">पत्ता</span>
-            <span className="mx-2">:</span>
-            <span>{data.contact?.address || 'N/A'}</span>
-          </div>
+        <div className="space-y-[5px]">
+          <AlignedRow
+            label="मोबाईल"
+            value={data.contact?.mobileNumber || data.contact?.phone || 'N/A'}
+          />
+          <AlignedRow
+            label="पत्ता"
+            value={data.contact?.address || 'N/A'}
+          />
         </div>
       </div>
 
+
       {/* Footer */}
-      <div className="text-center mt-8 pt-4 border-t-2 border-orange-300">
-        <p className="text-sm text-gray-600">
+      <div className="text-center mt-5 pt-2.5 border-t border-orange-200">
+        <p className="text-[9px] text-gray-500">
           Created with Marathi Biodata Maker
         </p>
       </div>
