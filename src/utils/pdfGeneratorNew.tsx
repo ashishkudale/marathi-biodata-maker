@@ -2,16 +2,16 @@ import { Document, Page, Text, View, StyleSheet, Font, pdf } from '@react-pdf/re
 import { BiodataData } from '@/lib/types';
 
 // Register Noto Sans Devanagari font for Marathi text
-// Using GitHub CDN for better reliability
+// Using direct Google Fonts API URL
 Font.register({
   family: 'Noto Sans Devanagari',
   fonts: [
     {
-      src: 'https://raw.githubusercontent.com/google/fonts/main/ofl/notosansdevanagari/NotoSansDevanagari%5Bwdth%2Cwght%5D.ttf',
+      src: 'https://fonts.gstatic.com/s/notosansdevanagari/v30/TuGSUVpzXI5FBtUq5a8bnKIOdTwQNO_W3khJXg.ttf',
       fontWeight: 400,
     },
     {
-      src: 'https://raw.githubusercontent.com/google/fonts/main/ofl/notosansdevanagari/NotoSansDevanagari%5Bwdth%2Cwght%5D.ttf',
+      src: 'https://fonts.gstatic.com/s/notosansdevanagari/v30/TuGSUVpzXI5FBtUq5a8bnKIOdTwQNO_W3khJXg.ttf',
       fontWeight: 700,
     },
   ],
