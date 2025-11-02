@@ -31,10 +31,10 @@ function formatTime(time: string | undefined): string | undefined {
 function AlignedRow({ label, value }: { label: string; value?: string }) {
   if (!value) return null;
   return (
-    <div className="flex">
-      <span className="font-semibold w-[170px] shrink-0">{label}</span>
-      <span className="w-[15px] shrink-0">:</span>
-      <span className="flex-1">{value}</span>
+    <div className="flex text-[11px] leading-[1.5]">
+      <span className="font-bold w-[170px] shrink-0 text-gray-700">{label}</span>
+      <span className="font-bold w-[15px] shrink-0 text-gray-700">:</span>
+      <span className="flex-1 text-gray-900">{value}</span>
     </div>
   );
 }
@@ -71,7 +71,7 @@ export default function Template1({ data }: TemplateProps) {
         <h3 className="text-[13px] font-bold text-orange-500 mb-2 pb-1 border-b border-orange-200">
           वैयक्तिक माहिती
         </h3>
-        <div className="text-[11px] space-y-[5px]">
+        <div className="space-y-[5px]">
           <AlignedRow
             label="नाव"
             value={data.personalInfo?.name || data.personalDetails?.fullNameMarathi || data.personalDetails?.fullName || 'N/A'}
@@ -148,7 +148,7 @@ export default function Template1({ data }: TemplateProps) {
         <h3 className="text-[13px] font-bold text-orange-500 mb-2 pb-1 border-b border-orange-200">
           कौटुंबिक माहिती
         </h3>
-        <div className="text-[11px] space-y-[5px]">
+        <div className="space-y-[5px]">
           <AlignedRow
             label="वडीलांचे नाव"
             value={data.familyInfo?.fatherName || data.familyDetails?.fatherName || 'N/A'}
@@ -193,7 +193,7 @@ export default function Template1({ data }: TemplateProps) {
         <h3 className="text-[13px] font-bold text-orange-500 mb-2 pb-1 border-b border-orange-200">
           संपर्क माहिती
         </h3>
-        <div className="text-[11px] space-y-[5px]">
+        <div className="space-y-[5px]">
           <AlignedRow
             label="मोबाईल"
             value={data.contact?.mobileNumber || data.contact?.phone || 'N/A'}
