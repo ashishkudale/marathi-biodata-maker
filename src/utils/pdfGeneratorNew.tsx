@@ -2,15 +2,16 @@ import { Document, Page, Text, View, StyleSheet, Font, pdf } from '@react-pdf/re
 import { BiodataData } from '@/lib/types';
 
 // Register Noto Sans Devanagari font for Marathi text
+// Using GitHub CDN for better reliability
 Font.register({
   family: 'Noto Sans Devanagari',
   fonts: [
     {
-      src: 'https://fonts.gstatic.com/s/notosansdevanagari/v26/TuGUUVpzXI5FBtUq5a8bjKYTZjtRU6Sgv3NaV_SNmI0b8QQCQmHn6B2OHjbL_08AlXQky-AzoFoW4Ow.ttf',
+      src: 'https://raw.githubusercontent.com/google/fonts/main/ofl/notosansdevanagari/NotoSansDevanagari%5Bwdth%2Cwght%5D.ttf',
       fontWeight: 400,
     },
     {
-      src: 'https://fonts.gstatic.com/s/notosansdevanagari/v26/TuGUUVpzXI5FBtUq5a8bjKYTZjtRU6Sgv3NaV_SNmI0b8QQCQmHn6B2OHjbL_08AldQly-AzoFoW4Ow.ttf',
+      src: 'https://raw.githubusercontent.com/google/fonts/main/ofl/notosansdevanagari/NotoSansDevanagari%5Bwdth%2Cwght%5D.ttf',
       fontWeight: 700,
     },
   ],
@@ -56,23 +57,27 @@ const styles = StyleSheet.create({
   },
   row: {
     flexDirection: 'row',
-    marginBottom: 4,
+    marginBottom: 5,
+  },
+  labelContainer: {
+    width: 140, // Fixed container width
+    flexShrink: 0,
   },
   label: {
-    width: 140, // Fixed width for perfect alignment
     fontWeight: 700,
     color: '#374151',
-    textAlign: 'right',
+  },
+  colonContainer: {
+    width: 20, // Fixed colon container width
+    flexShrink: 0,
   },
   colon: {
-    width: 20,
+    fontWeight: 700,
     color: '#374151',
-    textAlign: 'center',
   },
   value: {
     flex: 1,
     color: '#1f2937',
-    textAlign: 'left',
   },
   photo: {
     width: 120,
@@ -100,11 +105,16 @@ interface BiodataPDFProps {
 
 // Helper component for aligned rows
 const AlignedRow = ({ label, value }: { label: string; value: string | undefined }) => {
-  if (!value) return null;
+  // Don't render if value is undefined, null, or empty string (but allow "N/A")
+  if (!value || value === '') return null;
   return (
     <View style={styles.row}>
-      <Text style={styles.label}>{label}</Text>
-      <Text style={styles.colon}>:</Text>
+      <View style={styles.labelContainer}>
+        <Text style={styles.label}>{label}</Text>
+      </View>
+      <View style={styles.colonContainer}>
+        <Text style={styles.colon}>:</Text>
+      </View>
       <Text style={styles.value}>{value}</Text>
     </View>
   );
