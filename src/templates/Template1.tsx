@@ -43,23 +43,16 @@ export default function Template1({ data }: TemplateProps) {
   return (
     <div className="w-full max-w-2xl mx-auto bg-white p-8 font-marathi">
       {/* Header with Deity */}
-      <div className="text-center border-b-4 border-orange-500 pb-4 mb-6">
+      <div className="text-center border-b-[3px] border-orange-500 pb-[15px] mb-5">
         {/* New structure: deity */}
-        {data.deity?.showImage && data.deity?.imageUrl && (
-          <img
-            src={data.deity.imageUrl}
-            alt="Deity"
-            className="w-20 h-20 mx-auto mb-2 object-contain"
-          />
-        )}
         {data.deity?.name && (
-          <h1 className="text-3xl font-bold text-orange-600 mb-2">
+          <h1 className="text-lg font-bold text-orange-500 mb-[5px]">
             {data.deity.name}
           </h1>
         )}
         {/* Fallback to old structure */}
         {!data.deity?.name && data.header?.text && (
-          <h1 className="text-3xl font-bold text-orange-600 mb-2">
+          <h1 className="text-lg font-bold text-orange-500 mb-[5px]">
             {data.header.showSymbols && '|| '}
             {data.header.text}
             {data.header.showSymbols && ' ||'}
@@ -67,30 +60,18 @@ export default function Template1({ data }: TemplateProps) {
         )}
         {/* Default */}
         {!data.deity?.name && !data.header?.text && (
-          <h1 className="text-3xl font-bold text-orange-600 mb-2">
+          <h1 className="text-lg font-bold text-orange-500 mb-[5px]">
             || श्री गणेशाय नमः ||
           </h1>
         )}
-        <div className="w-24 h-1 bg-orange-500 mx-auto mt-3"></div>
       </div>
 
-      {/* Photo */}
-      {data.photoUrl && (
-        <div className="flex justify-center mb-6">
-          <img
-            src={data.photoUrl}
-            alt="Profile"
-            className="w-40 h-48 object-cover border-4 border-orange-500 rounded"
-          />
-        </div>
-      )}
-
       {/* Personal Details - NEW STRUCTURE */}
-      <div className="mb-6">
-        <h3 className="text-xl font-bold text-orange-600 mb-3 border-b-2 border-orange-300 pb-2 text-center">
+      <div className="mb-[15px]">
+        <h3 className="text-[13px] font-bold text-orange-500 mb-2 pb-1 border-b border-orange-200">
           वैयक्तिक माहिती
         </h3>
-        <div className="text-sm space-y-1.5">
+        <div className="text-[11px] space-y-[5px]">
           <AlignedRow
             label="नाव"
             value={data.personalInfo?.name || data.personalDetails?.fullNameMarathi || data.personalDetails?.fullName || 'N/A'}
@@ -163,11 +144,11 @@ export default function Template1({ data }: TemplateProps) {
       </div>
 
       {/* Family Details */}
-      <div className="mb-6">
-        <h3 className="text-xl font-bold text-orange-600 mb-3 border-b-2 border-orange-300 pb-2 text-center">
+      <div className="mb-[15px]">
+        <h3 className="text-[13px] font-bold text-orange-500 mb-2 pb-1 border-b border-orange-200">
           कौटुंबिक माहिती
         </h3>
-        <div className="text-sm space-y-1.5">
+        <div className="text-[11px] space-y-[5px]">
           <AlignedRow
             label="वडीलांचे नाव"
             value={data.familyInfo?.fatherName || data.familyDetails?.fatherName || 'N/A'}
@@ -208,11 +189,11 @@ export default function Template1({ data }: TemplateProps) {
       </div>
 
       {/* Contact Details */}
-      <div className="mb-6">
-        <h3 className="text-xl font-bold text-orange-600 mb-3 border-b-2 border-orange-300 pb-2 text-center">
+      <div className="mb-[15px]">
+        <h3 className="text-[13px] font-bold text-orange-500 mb-2 pb-1 border-b border-orange-200">
           संपर्क माहिती
         </h3>
-        <div className="text-sm space-y-1.5">
+        <div className="text-[11px] space-y-[5px]">
           <AlignedRow
             label="मोबाईल"
             value={data.contact?.mobileNumber || data.contact?.phone || 'N/A'}
@@ -226,8 +207,8 @@ export default function Template1({ data }: TemplateProps) {
 
 
       {/* Footer */}
-      <div className="text-center mt-8 pt-4 border-t-2 border-orange-300">
-        <p className="text-sm text-gray-600">
+      <div className="text-center mt-5 pt-2.5 border-t border-orange-200">
+        <p className="text-[9px] text-gray-500">
           Created with Marathi Biodata Maker
         </p>
       </div>
