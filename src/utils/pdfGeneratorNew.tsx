@@ -102,6 +102,29 @@ interface BiodataPDFProps {
   data: Partial<BiodataData>;
 }
 
+// Helper function to convert 24-hour time to 12-hour format with AM/PM
+const formatTime = (time: string | undefined): string | undefined => {
+  if (!time) return undefined;
+
+  // Check if time is already in 12-hour format (contains AM/PM)
+  if (time.toLowerCase().includes('am') || time.toLowerCase().includes('pm')) {
+    return time;
+  }
+
+  // Parse 24-hour format (e.g., "00:34" or "14:30")
+  const [hours, minutes] = time.split(':').map(num => parseInt(num, 10));
+
+  if (isNaN(hours) || isNaN(minutes)) {
+    return time; // Return original if can't parse
+  }
+
+  const period = hours >= 12 ? 'PM' : 'AM';
+  const hours12 = hours % 12 || 12; // Convert 0 to 12 for midnight
+  const minutesStr = minutes.toString().padStart(2, '0');
+
+  return `${hours12}:${minutesStr} ${period}`;
+};
+
 // Helper component for aligned rows
 const AlignedRow = ({ label, value }: { label: string; value: string | undefined }) => {
   // Don't render if value is undefined, null, or empty string (but allow "N/A")
@@ -152,7 +175,7 @@ const BiodataPDF = ({ data }: BiodataPDFProps) => (
         />
         <AlignedRow
           label="जन्मवेळ"
-          value={data.personalInfo?.birthTime || data.personalDetails?.birthTime}
+          value={formatTime(data.personalInfo?.birthTime || data.personalDetails?.birthTime)}
         />
         <AlignedRow
           label="जन्मस्थळ"
