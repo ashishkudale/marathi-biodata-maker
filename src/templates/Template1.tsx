@@ -9,8 +9,8 @@ function AlignedRow({ label, value }: { label: string; value?: string }) {
   if (!value) return null;
   return (
     <div className="flex">
-      <span className="font-semibold w-[140px] shrink-0">{label}</span>
-      <span className="w-[20px] shrink-0">:</span>
+      <span className="font-semibold w-[170px] shrink-0">{label}</span>
+      <span className="w-[15px] shrink-0">:</span>
       <span className="flex-1">{value}</span>
     </div>
   );

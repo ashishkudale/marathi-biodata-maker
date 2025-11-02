@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
   labelContainer: {
-    width: 140, // Fixed container width
+    width: 170, // Increased width to accommodate longer Marathi labels like "वडीलांचे नाव"
     flexShrink: 0,
   },
   label: {
@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
     color: '#374151',
   },
   colonContainer: {
-    width: 20, // Fixed colon container width
+    width: 15, // Fixed colon container width
     flexShrink: 0,
   },
   colon: {
